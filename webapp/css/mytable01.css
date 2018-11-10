@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+.detail_table{
+	cellpadding:0px;
+	width: 98%;
+	cellpadding:0;
+	cellspacing:0;
+	border-top:solid 1px #000;
+	border-right:solid 1px #000;
+}
+.detail_th{
+	width: 200px;
+	height:30px;
+	line-height:30px;
+	border-bottom:solid 1px #000;
+	border-left:solid 1px #000;
+	text-align:center;
+}
+.detail_td{
+	width: 200px;
+	height:30px;
+	line-height:30px;
+	border-bottom:solid 1px #000;
+	border-left:solid 1px #000;
+	text-align:center;
+}

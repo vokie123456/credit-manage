@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background: url(../images/bg.png) top center no-repeat #386b9e;
+	overflow: hidden;
+}
+
+img {
+	border: 0px;
+}
+
+#main {
+	position: absolute;
+	width: 600px;
+	height: 150px;
+	left: 50%;
+	top: 35%;
+	margin-left: -150px;   
+	margin-top: -100px;
+}
+#imgdiv {
+	left: -90px;
+	position: relative;
+	}
+#content {
+	left: -115px;
+	position: relative;
+	text-align: center;
+	top: 10px;
+/* 	top: 40px; */
+	width: 550px;
+	background: #e8e8e8;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0px 4px 5px #9C9C9C;
+	-webkit-box-shadow: 0px 4px 5px #9C9C9C;
+	box-shadow: 0px 4px 5px #9C9C9C;
+	behavior: url(pie.htc);
+	border: 1px solid #FFFFFF;
+}
+
+#header {
+	background: none repeat scroll 0 0 #4dacec;
+	color: #FFFFFF;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 4px 4px 0 0;
+}
+
+span {
+	text-align: right;
+	font-size: 1.5em;
+	font-family: Microsoft YaHei;
+}
+
+hr {
+	border: 1px inset #eee;
+	margin-top: 20px;
+}
+
+.login_btn {
+	background: none repeat scroll 0 0 #008cff;
+	color: #FFFFFF;
+	height: 40px;
+	margin-bottom: 15px;
+	width: 190px;
+	border-radius: 4px;
+	font-size: 18px;
+	list-style-type: none;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+.inp_css {
+	width: 300px;
+	height: 28px;
+	line-height: 28px;
+	font-size:14px;
+}
+
+.inp_yzm {
+	width: 115px;
+	height: 28px;
+	line-height: 28px;
+}
+
+.yzm {
+	margin-top: 0px;
+	margin-left: 25px;
+	width: 80px;
+	height: 26px;
+	line-height: 26px;
+	background:url('../images/verify_bg.png');
+	border:none;
+	font-family: Microsoft YaHei;
+    font-size: 18px;
+    color:#000;
+    text-align:center;
+}
+
+/* 密码卫士控件样式 */
+.ocx_style {
+    border: 1px solid #7F9DB9;
+    width: 300px;
+    height: 28px;
+    font-size:14px;
+    display: inline-block;
+    padding-top: 5px;
+}
