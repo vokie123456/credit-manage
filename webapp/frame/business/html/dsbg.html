@@ -1,0 +1,858 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+    .w120{width: 120px;}
+    .w40{width: 40%; text-align: left !important; padding-left: 10px;}
+    .yh-tit-bor{margin-top: 10px; margin-bottom: 10px; padding-left: 10px;}
+    .padLeft{padding-left: 10px}
+    .titTimeDv{
+        display:inline-block;
+        /*margin-left:500px;!*position:relative;left:890px;top:-80px;*!*/
+    }
+    .yh-table-news tfoot td{text-align:center;}
+    .sonTime{margin-left:400px;padding-left: 10px; box-sizing:border-box; margin-bottom: 10px;}
+    .dianshang{height:80px;background:#eee;line-height: 80px;}
+    #orderPager,#addressPager,.detailsPager{text-align: center;}
+    .disNone{display:none;}
+    .tabChange ul li a{color:#00a5ff;}
+</style>
+<div class="tabSlide tabChange">
+    <ul class="control clearfix">
+        <li class="border"><a href="#zfbg"><span class="zfbg">√</span>支付报告</a></li>
+        <li><a href="#dsdbg"><span class="dsdbg">√</span>电商东报告</a></li>
+        <li><a href="#dsbbg"><span class="dsbbg">√</span>电商宝报告</a></li>
+    </ul>
+    <div class="content"></div>
+</div>
+<div id="zfbg" class="examine">
+    <div id="nozfbg" style="display:none;">无此支付报告,客户未授权</div>
+    <div id="zfbgHtml">
+        <div class="single-table-dv" style="padding-bottom: 20px;">
+            <div class="dianshang">
+                <div class="titTimeDv">
+                    <span style="padding-left:10px;">支付报告</span>
+                    <span class="sonTime">
+                        报告编号：<span id="zfbg_bg_code"></span>
+                    </span>
+                    <span class="sonTime">
+                        报告时间：<span id="zfbg_bg_time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <p class="yh-tit-bor">
+            <span>基本信息</span>
+        </p>
+        <table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td class="BgColor w120">姓名</td>
+                <td colspan="3">
+                    <span class="zfbgbxx1"></span>
+                </td>
+                <td class="BgColor w120">身份证号码</td>
+                <td colspan="3">
+                    <span class="zfbgbxx2"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">是否实名认证</td>
+                <td colspan="3">
+                    <span class="zfbgbxx3"></span>
+                </td>
+                <td class="BgColor w120">身份证所在地</td>
+                <td colspan="3">
+                    <span class="zfbgbxx4"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">邮箱</td>
+                <td colspan="3">
+                    <span class="zfbgbxx5"></span>
+                </td>
+                <td class="BgColor w120">注册时间</td>
+                <td colspan="3">
+                    <span class="zfbgbxx6"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">手机号</td>
+                <td colspan="3">
+                    <span class="zfbgbxx7"></span>
+                </td>
+                <td class="BgColor w120">绑定支付宝账号</td>
+                <td colspan="3">
+                    <span class="zfbgbxx8"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">绑定手机号</td>
+                <td colspan="3">
+                    <span class="zfbgbxx9"></span>
+                </td>
+                <td class="BgColor w120">绑定银行卡数量</td>
+                <td colspan="3">
+                    <span class="zfbgbxx10"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="yh-tit-bor">
+            <span>财富信息</span>
+        </p>
+        <table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td class="BgColor w120">支付宝账户余额</td>
+                <td colspan="3">
+                    <span class="zfbcfxx1"></span>
+                </td>
+                <td class="BgColor w120">花呗额度</td>
+                <td colspan="3">
+                    <span class="zfbcfxx2"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">余额宝</td>
+                <td colspan="3">
+                    <span class="zfbcfxx3"></span>
+                </td>
+                <td class="BgColor w120">花呗余额</td>
+                <td colspan="3">
+                    <span class="zfbcfxx4"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">基金</td>
+                <td colspan="3">
+                    <span class="zfbcfxx5"></span>
+                </td>
+                <td class="BgColor w120">花呗消费额</td>
+                <td colspan="3">
+                    <span class="zfbcfxx6"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">招财宝:</td>
+                <td colspan="3">
+                    <span class="zfbcfxx7"></span>
+                </td>
+                <td class="BgColor w120">芝麻信用分:</td>
+                <td colspan="3">
+                    <span class="zfbcfxx8"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">存金宝:</td>
+                <td colspan="3">
+                    <span class="zfbcfxx9"></span>
+                </td>
+                <td class="BgColor w120">花呗下期待还额:</td>
+                <td colspan="3">
+                    <span class="zfbcfxx10"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">淘宝理财:</td>
+                <td colspan="3">
+                    <span class="zfbcfxx11"></span>
+                </td>
+                <td class="BgColor w120"></td>
+                <td colspan="3">
+                    <span class="zfbcfxx12"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="yh-tit-bor">
+            <span>消费信息</span>
+        </p>
+        <table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+            <thead>
+            <tr class="BgColor">
+                <td>交易时间</td>
+                <td>交易类型</td>
+                <td>交易名称</td>
+                <td>交易订单</td>
+                <td>交易对象</td>
+                <td>交易金额</td>
+                <td>收入/支出</td>
+                <td>交易状态</td>
+            </tr>
+            </thead>
+            <tbody id="zfbg_payInfo">
+            </tbody>
+        </table>
+        <div id="zfbpayInfoPager" style="text-align: center;"></div>
+    </div>
+</div>
+<div id="dsdbg" class="examine disNone">
+    <div class="nodsDv" style="display:none;">无此电商东报告，客户未授权。</div>
+    <div class="yh-news-dv sjthbgDv">
+        <div class="single-table-dv" style="padding-bottom: 20px;">
+            <div class="dianshang">
+                <div class="titTimeDv">
+                    <span style="padding-left:10px;">电商东报告</span>
+                    <span class="sonTime">
+                    报告编号：<span id="bg_code"></span>
+                </span>
+                    <span class="sonTime">
+                    报告时间：<span id="bg_time"></span>
+                </span>
+                </div>
+            </div>
+        </div>
+            <p class="yh-tit-bor">
+                <span>基本信息</span>
+            </p>
+            <table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <td class="BgColor w120">姓名</td>
+                    <td colspan="3">
+                        <span class="gjjjbxx1"></span>
+                    </td>
+                    <td class="BgColor w120">身份证号码</td>
+                    <td colspan="3">
+                        <span class="gjjjbxx2"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="BgColor w120">年龄</td>
+                    <td colspan="3">
+                        <span class="gjjjbxx3"></span>
+                    </td>
+                    <td class="BgColor w120">身份证号所在地</td>
+                    <td colspan="3">
+                        <span class="gjjjbxx4"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="BgColor w120">性别</td>
+                    <td colspan="3">
+                        <span class="gjjjbxx5"></span>
+                    </td>
+                    <td class="BgColor w120">绑定手机号</td>
+                    <td colspan="3">
+                        <span class="gjjjbxx6"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="BgColor w120">京东账号</td>
+                    <td colspan="3">
+                        <span class="gjjjbxx7"></span>
+                    </td>
+                    <td class="BgColor w120"></td>
+                    <td colspan="3">
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="yh-tit-bor">
+                <span>账户信息</span>
+            </p>
+            <table class="tabcustomPeo yh-table-news gjjTable" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr class="BgColor">
+                        <td>账户余额</td>
+                        <td>金融账户余额</td>
+                        <td>信用分数</td>
+                        <td>信用额度</td>
+                        <td>消费额度</td>
+                    </tr>
+                </thead>
+                <tbody id="accBody">
+
+                </tbody>
+
+            </table>
+
+        <div>
+            <p class="yh-tit-bor">
+                <span>地址信息</span>
+            </p>
+            <table class="tabcustomPeo yh-table-news gjjTable" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr>
+                    <td>默认地址</td>
+                    <td>地址</td>
+                    <td>邮编</td>
+                    <td>收货人</td>
+                    <td>手机号码</td>
+                    <td>固定电话</td>
+                </tr>
+                </thead>
+                <tbody  id="tbl-Addresslist">
+                </tbody>
+            </table>
+            <div id="addressPager" style="text-align:center;"></div>
+        </div>
+        <div>
+            <p class="yh-tit-bor">
+                <span>消费信息</span>
+            </p>
+            <table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr class="BgColor">
+                    <td>订单时间</td>
+                    <td>订单状态</td>
+                    <td>订单金额</td>
+                    <td>收货地址</td>
+                    <td>收货人</td>
+                    <td>手机号码</td>
+                    <td>固定电话</td>
+                    <td>发票类型</td>
+                    <td>发票抬头</td>
+                    <td>商品详情</td>
+                </tr>
+                </thead>
+                <tbody id="tbl-Orderlist">
+                </tbody>
+
+            </table>
+            <div id="orderPager" style="text-align: center;"></div>
+        </div>
+
+        <input type="hidden" id="authId">
+        </div>
+            <!--电商报告商品详情弹框-->
+        <div id="detailsSearch" style="display:none;">
+          <table class="tabcustomPeo yh-table-news gjjTable" cellspacing="0" cellpadding="0">
+              <thead>
+              <tr class="BgColor">
+                  <td>序号</td>
+                  <td>商品名称</td>
+                  <td>商品单价</td>
+                  <td>商品数量</td>
+              </tr>
+              </thead>
+              <tbody class="tbl-Detailslist">
+
+              </tbody>
+          </table>
+        <div class="detailsPager" style="text-align: center;"></div>
+     </div>
+</div>
+<div id="dsbbg" class="examine disNone">
+    <div class="nodsbbgDv" style="display:none;">无此电商宝报告，客户未授权。</div>
+    <div class="yh-news-dv dsbbgsjthbgDv">
+        <div class="single-table-dv" style="padding-bottom: 20px;">
+            <div class="dianshang">
+                <div class="titTimeDv">
+                    <span style="padding-left:10px;">电商宝报告</span>
+                    <span class="sonTime">
+                    报告编号：<span id="dsbbf_bg_code"></span>
+                    </span>
+                    <span class="sonTime">
+                    报告时间：<span id="dsbbf_bg_time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <p class="yh-tit-bor">
+            <span>基本信息</span>
+        </p>
+        <table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td class="BgColor w120">姓名</td>
+                <td colspan="3">
+                    <span class="dsbbgbxx1"></span>
+                </td>
+                <td class="BgColor w120">身份证号码</td>
+                <td colspan="3">
+                    <span class="dsbbgbxx2"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">年龄</td>
+                <td colspan="3">
+                    <span class="dsbbgbxx3"></span>
+                </td>
+                <td class="BgColor w120">身份证号所在地</td>
+                <td colspan="3">
+                    <span class="dsbbgbxx4"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">性别</td>
+                <td colspan="3">
+                    <span class="dsbbgbxx5"></span>
+                </td>
+                <td class="BgColor w120">绑定手机号</td>
+                <td colspan="3">
+                    <span class="dsbbgbxx6"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">淘宝账号</td>
+                <td colspan="3">
+                    <span class="dsbbgbxx7"></span>
+                </td>
+                <td class="BgColor w120"></td>
+                <td colspan="3">
+                    <span class="dsbbgbxx8"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <p class="yh-tit-bor">
+                <span>地址信息</span>
+            </p>
+            <table class="tabcustomPeo yh-table-news gjjTable" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr>
+                    <td>默认地址</td>
+                    <td>地址</td>
+                    <td>邮编</td>
+                    <td>收货人</td>
+                    <td>手机号码</td>
+                    <td>固定电话</td>
+                </tr>
+                </thead>
+                <tbody  id="dsbbg_Addresslist">
+                </tbody>
+            </table>
+            <div id="dsbbg_addressPager" style="text-align:center;"></div>
+        </div>
+        <div>
+            <p class="yh-tit-bor">
+                <span>消费信息</span>
+            </p>
+            <table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr class="BgColor">
+                    <td>订单时间</td>
+                    <td>订单状态</td>
+                    <td>订单金额</td>
+                    <td>收货地址</td>
+                    <td>收货人</td>
+                    <td>手机号码</td>
+                    <td>固定电话</td>
+                    <td>发票类型</td>
+                    <td>发票抬头</td>
+                    <td>商品详情</td>
+                </tr>
+                </thead>
+                <tbody id="dsbbg_Orderlist">
+                </tbody>
+
+            </table>
+            <div id="dsbbg_orderPager" style="text-align:center;"></div>
+        </div>
+        <!--电商报告商品详情弹框-->
+        <div id="dsbbgdetailsSearch" style="display:none;">
+            <table class="tabcustomPeo yh-table-news gjjTable" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr class="BgColor">
+                    <td>序号</td>
+                    <td>商品名称</td>
+                    <td>商品单价</td>
+                    <td>商品数量</td>
+                </tr>
+                </thead>
+                <tbody class="dsbbg-Detailslist">
+
+                </tbody>
+            </table>
+            <div class="dfbbgdetailsPager" style="text-align:center;"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var pageSize=10;
+
+    $j(function(){
+        $j('.tabChange a').click(function(){
+            var _id = $j(this).attr('href');
+            $j('.examine').hide();
+            $j('body,html').animate({ scrollTop: 0 },200);
+            $j(_id).show();
+            $j(this).parent().addClass('border').siblings().removeClass('border');
+        })
+        var creditId = $j('#creditId').val();
+        var clientId = $j('#clientId').val();
+//        var clientId = '1657 ';
+//        支付报告基本信息
+        $j.ajax({
+            url:$j("body").attr("contextpath")+'/credit/dsZfb/basicInfo.do',
+            type:'POST',
+            data:{"clientId":clientId},
+            dataType:'json',
+            success:function(Json){
+              console.log(Json);
+              if(Json.code == '0'){
+                  //>>无数据
+                  if(Json.data.data==undefined||Json.data.data==null)
+                  {
+                      $j('#nozfbg').css('display','block');
+                      $j('#zfbgHtml').css('display','none');
+                      $j('.zfbg').html('×');
+                      return;
+                  }
+                  $j('#zfbg_bg_code').html(Json.data.authNo);
+                  $j('#zfbg_bg_time').html(dateFormat(Json.data.authTime,'hour'));
+                  $j('.zfbgbxx1').html(Json.data.data.real_name);
+                  $j('.zfbgbxx2').html(Json.data.data.identityCode);
+                  $j('.zfbgbxx3').html((Json.data.data.verified == '0' ? '未认证' : '已认证'));
+                  $j('.zfbgbxx4').html();
+                  $j('.zfbgbxx5').html(Json.data.data.email);
+                  $j('.zfbgbxx6').html(dateFormat(Json.data.data.regTime,'hour'));
+                  $j('.zfbgbxx7').html(Json.data.data.mobile);
+                  $j('.zfbgbxx8').html(Json.data.data.taobaoName);
+                  $j('.zfbgbxx9').html(Json.data.data.mobile);
+                  $j('.zfbgbxx10').html(Json.data.data.bindedBankcardAmount);
+              }
+            }
+        })
+//        支付宝财富信息
+        $j.ajax({
+            url:$j("body").attr("contextpath")+'/credit/dsZfb/richInfo.do',
+            type:'POST',
+            data:{"clientId":clientId},
+            dataType:'json',
+            success:function(Json){
+                console.log(Json);
+                if(Json.code == '0'){
+                    if(Json.data==undefined||Json.data==null)
+                    {
+                        $j('#nozfbg').css('display','block');
+                        $j('#zfbgHtml').css('display','none');
+                        $j('.zfbg').html('×');
+                        return;
+                    }
+                    $j('.zfbcfxx1').html(Json.data.assetsBalance);
+                    $j('.zfbcfxx2').html(Json.data.huabeiQuota);
+                    $j('.zfbcfxx3').html(Json.data.assetsYuEBao);
+                    $j('.zfbcfxx4').html(Json.data.huabeiBalance);
+                    $j('.zfbcfxx5').html(Json.data.assetsFund);
+                    $j('.zfbcfxx6').html(Json.data.consumeQuota);
+                    $j('.zfbcfxx7').html(Json.data.assetsZhaoCaiBao);
+                    $j('.zfbcfxx8').html(Json.data.zhimaCreaditPoint);
+                    $j('.zfbcfxx9').html(Json.data.assetsCunJinBao);
+                    $j('.zfbcfxx10').html(Json.data.huabeiNextRepaymentAmount);
+                    $j('.zfbcfxx11').html(Json.data.assetsTaobaoFinance);
+                }
+            }
+        })
+//        支付宝消费信息分页
+        var zfbpayInfoList=new Pag(
+            {
+                url:$j("body").attr("contextpath")+'/credit/dsZfb/getPaginationCusInfo.do',
+                data:{"start":0,"clientId":clientId},
+                reqType:"POST",
+                cols:[
+                    {name:"tradeTime",fmt: function(cellvalue){return dateFormat(cellvalue,"hour");}},
+                    {name:'tradeType',fmt:nullFmt},
+                    {name:'tradeName',fmt:nullFmt},
+                    {name:'tradeOrder',fmt:nullFmt},
+                    {name:'tradePartner',fmt:nullFmt},
+                    {name:'tradeAmount',fmt:nullFmt},
+                    {name:'tradeCapitalFlow',fmt:nullFmt},
+                    {name:'tradeStatus',fmt:nullFmt},
+                ],
+                body:"#zfbg_payInfo",
+                pager:"#zfbpayInfoPager",
+                pageSize:pageSize
+            }
+        );
+        zfbpayInfoList.act();
+//        电商东报告信息
+        $j.ajax({
+            url:$j("body").attr("contextpath")+'/credit/dsjd/dataInfo.do',
+            type:'POST',
+            data:{"creditId":creditId,"pageSize":pageSize},
+            dataType:'json',
+            success:function(json){
+                if(json.code == 0){
+
+                    var data = json.data;
+                    //>>无数据
+                    if(data==undefined||data==null)
+                    {
+                        $j('.nodsDv').css('display','block');
+                        $j('.sjthbgDv').css('display','none');
+                        $j('.dsdbg').html('×');
+                        return;
+                    }
+                    //dsJdBaseInfo,用户基本信息
+                    var baseInfo=data.dsJdBaseInfo;
+                    var authInfo=data.authenticationCenter;
+                    if (baseInfo == undefined || baseInfo == null) {
+                        $j('.nodsDv').css('display', 'block');
+                        $j('.sjthbgDv').css('display', 'none');
+                        return;
+                    }
+                    if(authInfo==undefined||authInfo==null)
+                    {
+                        $j('.nodsDv').css('display','block');
+                        $j('.sjthbgDv').css('display','none');
+                        return;
+                    }
+                    if(baseInfo!=undefined&&baseInfo!=null)
+                    {
+                        //认证信息
+                        $j('#bg_code').html(nullFmt(authInfo.authNo));//报告编号
+                        $j('#bg_time').html(nullFmt(dateFormat(authInfo.authTime,"hour")) );//报告时间
+                        $j('#authId').val(nullFmt(authInfo.id));
+
+                        //基本信息
+                        $j('.gjjjbxx1').html(nullFmt(baseInfo.realName));
+                        $j('.gjjjbxx2').html(nullFmt(baseInfo.identityCode));
+                        $j('.gjjjbxx3').html(nullFmt(baseInfo.age));
+                        $j('.gjjjbxx5').html(nullFmt(baseInfo.gender));
+                        $j('.gjjjbxx6').html(nullFmt(baseInfo.mobile));
+                        $j('.gjjjbxx7').html(nullFmt(baseInfo.userName));
+                    }
+                    //账户信息
+                    var accInfo=data.dsJdAccountInfo;
+                    if(accInfo!=undefined&&accInfo!=null) {
+                        var body="<tr>";
+                       body+="<td>"+ nullFmt(accInfo.accountBalance/100)+"</td>";
+                       body+="<td>"+ nullFmt(accInfo.financialAccountBalance/100)+"</td>";
+                       body+="<td>"+ nullFmt(accInfo.creditPoint)+"</td>";
+                       body+="<td>"+ nullFmt(accInfo.creditQuota/100)+"</td>";
+                       body+="<td>"+ nullFmt(accInfo.consumeQuota/100)+"</td>";
+                       body+="</tr>";
+                        $j('#accBody').html(body);
+                    }
+                }else{
+                    $j('.nodsDv').css('display','block');
+                    $j('.sjthbgDv').css('display','none');
+                }
+            }
+        });
+
+        //电商东报告地址分页
+        var addressList=new Pag(
+          {
+              url:$j("body").attr("contextpath")+'/credit/dsjd/getPaginationAddress.do',
+              data:{start:0,creditId:creditId},
+              reqType:"POST",
+              cols:[{name:"isDefault",fmt: function(cellvalue){
+                  var defaultA="";
+                  if(cellvalue!=null&&cellvalue==1)
+                  {
+                      defaultA="是";
+                  }
+                  else {
+                      defaultA="否";
+                  }
+                  return defaultA;
+              }},
+                  {name:"address",fmt:nullFmt},
+                  {name:'zipCode',fmt:nullFmt},
+                  {name:'name',fmt:nullFmt},
+                  {name:'mobile',fmt:nullFmt},
+                  {name:'telephone',fmt:nullFmt}
+              ],
+              body:"#tbl-Addresslist",
+              pager:"#addressPager",
+              pageSize:pageSize
+          }
+        );
+        addressList.act();
+        //电商东报告消费信息分页
+        var orderList=new Pag(
+            {
+                url:$j("body").attr("contextpath")+'/credit/dsjd/getPaginationOrder.do',
+                data:{start:0,creditId:creditId},
+                reqType:"POST",
+                cols:[{name:"orderTime",fmt: function(cellvalue){
+                    return dateFormat(cellvalue,"hour");
+                }},
+                    {name:"orderStatus",fmt:nullFmt},
+                    {name:'orderAmount',fmt:function(cellvalue){if(cellvalue==undefined||cellvalue==null||cellvalue==0){return "";}else return cellvalue/100;}},
+                    {name:'receiverAddr',fmt:nullFmt},
+                    {name:'receiverName',fmt:nullFmt},
+                    {name:'receiverMobile',fmt:nullFmt},
+                    {name:'receiverTelephone',fmt:nullFmt},
+                    {name:'receiptType',fmt:nullFmt},
+                    {name:'receiptTitle',fmt:nullFmt},
+                    {operate:{name:"<a href=\"javascript:;\" onclick=\"showDetail()\" style='color:blue;'>详情</a>",params:["orderId"]}}
+                ],
+                body:"#tbl-Orderlist",
+                pager:"#orderPager",
+                pageSize:pageSize
+            }
+        );
+        orderList.act();
+    })
+//        电商宝报告信息
+$j.ajax({
+    url:$j("body").attr("contextpath")+'/credit/dsjd/taoBaoDataInfo.do',
+    type:'POST',
+    data:{"creditId":creditId,"pageSize":pageSize},
+    dataType:'json',
+    success:function(json){
+        console.log('123')
+        console.log(json)
+        if(json.code == 0){
+            var data = json.data;
+            //>>无数据
+            if(data==undefined||data==null)
+            {
+                $j('.nodsbbgDv').css('display','block');
+                $j('.dsbbgsjthbgDv').css('display','none');
+                $j('.dsbbg').html('×');
+                return;
+            }
+            //dsJdBaseInfo,用户基本信息
+            var baseInfo=data.dsJdBaseInfo;
+            var authInfo=data.authenticationCenter;
+            if (baseInfo == undefined || baseInfo == null) {
+                $j('.nodsbbgDv').css('display', 'block');
+                $j('.sjthbgDv').css('display', 'none');
+                return;
+            }
+            if(authInfo==undefined||authInfo==null)
+            {
+                $j('.nodsbbgDv').css('display','block');
+                $j('.dsbbgsjthbgDv').css('display','none');
+                return;
+            }
+            if(baseInfo!=undefined&&baseInfo!=null)
+            {
+                //认证信息
+                $j('#dsbbf_bg_code').html(nullFmt(authInfo.authNo));//报告编号
+                $j('#dsbbf_bg_time').html(nullFmt(dateFormat(authInfo.authTime,"hour")) );//报告时间
+                $j('#authId').val(nullFmt(authInfo.id));
+
+                //基本信息
+                $j('.dsbbgbxx1').html(nullFmt(baseInfo.realName));
+                $j('.dsbbgbxx2').html(nullFmt(baseInfo.identityCode));
+                $j('.dsbbgbxx3').html(nullFmt(baseInfo.age));
+                $j('.dsbbgbxx5').html(nullFmt(baseInfo.gender));
+                $j('.dsbbgbxx6').html(nullFmt(baseInfo.mobile));
+                $j('.dsbbgbxx7').html(nullFmt(baseInfo.userName));
+            }
+        }else{
+            $j('.nodsbbgDv').css('display','block');
+            $j('.dsbbgsjthbgDv').css('display','none');
+        }
+    }
+});
+
+//电商宝报告地址分页
+var dsbbgaddressList=new Pag(
+    {
+        url:$j("body").attr("contextpath")+'/credit/dsjd/getPaginationTaoBaoAddress.do',
+        data:{start:0,creditId:creditId},
+        reqType:"POST",
+        cols:[{name:"isDefault",fmt: function(cellvalue){
+            var defaultA="";
+            if(cellvalue!=null&&cellvalue==1)
+            {
+                defaultA="是";
+            }
+            else {
+                defaultA="否";
+            }
+            return defaultA;
+        }},
+            {name:"address",fmt:nullFmt},
+            {name:'zipCode',fmt:nullFmt},
+            {name:'name',fmt:nullFmt},
+            {name:'mobile',fmt:nullFmt},
+            {name:'telephone',fmt:nullFmt}
+        ],
+        body:"#dsbbg_Addresslist",
+        pager:"#dsbbg_addressPager",
+        pageSize:pageSize
+    }
+);
+dsbbgaddressList.act();
+//电商宝报告消费信息分页
+var dsbbgorderList=new Pag(
+    {
+        url:$j("body").attr("contextpath")+'/credit/dsjd/getPaginationTaoBaoOrder.do',
+        data:{start:0,creditId:creditId},
+        reqType:"POST",
+        cols:[{name:"orderTime",fmt: function(cellvalue){
+            return dateFormat(cellvalue,"hour");
+        }},
+            {name:"orderStatus",fmt:nullFmt},
+            {name:'orderAmount',fmt:function(cellvalue){if(cellvalue==undefined||cellvalue==null||cellvalue==0){return "";}else return cellvalue/100;}},
+            {name:'receiverAddr',fmt:nullFmt},
+            {name:'receiverName',fmt:nullFmt},
+            {name:'receiverMobile',fmt:nullFmt},
+            {name:'receiverTelephone',fmt:nullFmt},
+            {name:'receiptType',fmt:nullFmt},
+            {name:'receiptTitle',fmt:nullFmt},
+            {operate:{name:"<a href=\"javascript:;\" onclick=\"dsbbgshowDetail()\" style='color:blue;'>详情</a>",params:["orderId"]}}
+        ],
+        body:"#dsbbg_Orderlist",
+        pager:"#dsbbg_orderPager",
+        pageSize:pageSize
+    }
+);
+dsbbgorderList.act();
+
+
+function nullFmt(cellvalue) {
+    if (cellvalue == undefined || cellvalue === null || cellvalue === "null") {
+        return "";
+    }
+    return cellvalue;
+}
+function showDetail(orderId) {
+    $j('#detailsBody').html("");
+    //分页
+    //商品详情分页
+    var detailsList=new Pag(
+        {
+            url:$j("body").attr("contextpath")+'/credit/dsjd/getOrderDetails.do',
+            data:{start:0,orderId:orderId},
+            reqType:"POST",
+            cols:[{name:"id"},
+                {name:"productName",fmt:nullFmt},
+                {name:'productPrice',fmt:function(cellvalue){if(cellvalue==undefined||cellvalue==null||cellvalue==0){return "";}else return cellvalue/100;}},
+                {name:'productAmount',fmt:nullFmt}
+            ],
+            body:".tbl-Detailslist",
+            pager:".detailsPager",
+            pageSize:10
+        }
+    );
+    detailsList.act();
+    var contentDv = $j("#detailsSearch").html();
+    easyDialog.open({
+        container: {
+            header: '查看商品详情',
+            content: '<div>' + contentDv + '</div>'
+        },
+        width: 980
+    });
+}
+function dsbbgshowDetail(orderId) {
+    $j('#detailsBody').html("");
+    //分页
+    //商品详情分页
+    var detailsList=new Pag(
+        {
+            url:$j("body").attr("contextpath")+'/credit/dsjd/getTaobaoOrderDetails.do',
+            data:{start:0,orderId:orderId},
+            reqType:"POST",
+            cols:[{name:'id'},
+                {name:"productName",fmt:nullFmt},
+                {name:'productPrice',fmt:function(cellvalue){if(cellvalue==undefined||cellvalue==null||cellvalue==0){return "";}else return cellvalue/100;}},
+                {name:'productAmount',fmt:nullFmt}
+            ],
+            body:".dsbbg-Detailslist",
+            pager:".dfbbgdetailsPager",
+            pageSize:10
+        }
+    );
+    detailsList.act();
+    var contentDv = $j("#dsbbgdetailsSearch").html();
+    easyDialog.open({
+        container: {
+            header: '查看商品详情',
+            content: '<div>' + contentDv + '</div>'
+        },
+        width: 980
+    });
+}
+</script>
+

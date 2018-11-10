@@ -1,0 +1,454 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<div class="yh-news-dv sjthbgDv">
+	<div class="single-table-dv" style="padding-bottom: 20px;">
+		<table cellspacing="0" cellpadding="0" class="tabcustomPeo yh-table-news">
+			<tbody>
+				<tr>
+					<td class="BgColor w85">姓名</td>
+					<td>
+						<span id="sjthbg1"></span>
+					</td>
+					<td class="BgColor w85">手机</td>
+					<td>
+						<span id="sjthbg2"></span>
+					</td>
+					<td class="BgColor w85">身份证</td>
+					<td>
+						<span id="sjthbg3"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w85">邮箱</td>
+					<td>
+						<span id="sjthbg4"></span>
+					</td>
+					<td class="BgColor w85">会员等级</td>
+					<td>
+						<span id="sjthbg5"></span>
+					</td>
+					<td class="BgColor w85">户籍地址</td>
+					<td>
+						<span id="sjthbg6"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="yh-tit-bor" style="margin-top: 10px; margin-bottom: 0px;">
+			<span>与运营商对比结果</span>
+		</p>
+		<div class="fruit">
+			<span>是否已实名:</span>
+			<span id="sjthbg7"></span>
+			<span style="margin-left: 50px;">姓名与运营商数据匹配结果:</span>
+			<span id="sjthbg8"></span>
+		</div>
+		<p class="yh-tit-bor">
+			<span>每月通话统计</span>
+		</p>
+		<table cellspacing="0" cellpadding="0" class="tabcustomPeo yh-table-news sjthbgTable">
+			<thead>
+				<tr>
+					<!--<td>运营商</td>-->
+					<td>号码</td>
+					<td>归属地</td>
+					<td>月份</td>
+					<td>主叫时长</td>
+					<td>被叫时长</td>
+					<td>短信数量</td>
+					<td>话费消费(元)</td>
+				</tr>
+			</thead>
+			<tbody id="sjthbg9">
+				
+			</tbody>
+		</table>
+		<p class="yh-tit-bor">
+			<span>通话详情统计</span>
+		</p>
+		<div class="th-deatil">
+			<div class="th-search">
+				<form id="searchFrm">
+					<input type="hidden" name="authId" />
+					<input type="hidden" name="clientId" />
+					<input type="hidden" name="reportNumber" />
+					<input type="hidden" name="baogaoDate" />
+					<input type="hidden" name="projectId" />
+					<input type="hidden" name="pageIndex" id="pageIndex" />
+					<input type="hidden" name="paixu" id="paixu" />
+					<input type="hidden" id="pageTotal" />
+					<span>姓名：</span>
+					<input type="text" name="clientName" />
+					<span>手机：</span>
+					<input type="text" name="mobileNo" />
+					<span>关系：</span>
+					<input type="text" name="inferredRelationship" />
+					<span>归属地:</span>
+					<input type="text" name="zone" />
+					<span>号码分类:</span>
+					<input type="text" name="contactType" />
+					<span>号码标签:</span>
+					<input type="text" name="contactName" />
+					<button id="searchSubmit" type="button" class="th-submit">查询</button>
+				</form>
+			</div>
+			<table cellspacing="0" cellpadding="0" class="tabcustomPeo yh-table-news sjthbgTable">
+				<thead>
+					<tr>
+						<td>号码</td>
+						<td>姓名</td>
+						<td>推测关系</td>
+						<td>号码分类</td>
+						<td>号码标签</td>
+						<td>归属地</td>
+						<td>主叫次数</td>
+						<td>主叫时长</td>
+						<td>被叫次数</td>
+						<td>被叫时长</td>
+						<td>
+							<a id="thCount" href="javascript:;">通话次数</a>
+						</td>
+						<td>
+							<a id="thTimeOut" href="javascript:;">通话时长</a>
+						</td>
+						<td>最近一周</td>
+						<td>最近一月</td>
+						<td>最近三月</td>
+					</tr>
+				</thead>
+				<tbody id="sjthbg10">
+					
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="15" class="page-td">
+							<a href="javascript:;" data-type="first">首页</a>
+							<a href="javascript:;" data-type="prev">上一页</a>
+							<a href="javascript:;" data-type="next">下一页</a>
+							<a href="javascript:;" data-type="last">末页</a>
+							<font id="dangqianye"></font>  /  <font id="zongye"></font>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>
+<style>
+	.page-td{text-align: center !important; padding-top: 10px;}
+	.page-td a{text-decoration: none; margin:10px 5px;}
+	.sjthbgDv{font-size: 12px;}
+	.fruit{padding: 10px;}
+	.sjthbgTable thead td{background-color: #f7f7f7;}
+	.th-deatil{}
+	.th-search{margin-bottom: 10px;}
+	.th-search input{width: 90px; margin-right: 16px;}
+	.th-search .th-submit{border: 1px solid #ccc; cursor: pointer; padding: 0 15px;}
+	.upContacts{padding: 10px; width: 410px;}
+	.upContacts table{text-align: left;}
+	.upContacts table td{line-height: 30px;}
+	.upContacts .sele{min-width: 100px;}
+	.upContacts .pad30{padding-left: 30px;}
+	.yh-tit-bor{font-size: 12px;}
+	.upContacts .textCon{width: 330px; height: 100px; resize:none; margin-top: 10px;}
+</style>
+<script>
+	$j(function(){
+		var reportNumber = "",			//报告编号
+			reportDate = "",			//报告时间
+			str1 = "",
+			str2 = "";
+		$j.ajax({
+			url:$j("body").attr("contextpath")+"/credit/shujumohe/byClientIdGetMessage.do",
+			type:'get',
+			data:{'clientId':$j('#client_id').val(),'projectId':$j('#project_id').val()},
+			dataType:'json',
+			success:function(Json){
+				if(Json.top != null && Json.top != ""){
+					reportNumber = Json.top.reportNumber;
+					reportDate = dateFormat(Json.top.auth_time,"day");
+					$j('input[name="reportNumber"]').val(reportNumber);
+					$j('input[name="baogaoDate"]').val(reportDate);
+					$j('input[name="clientId"]').val($j('#client_id').val());
+					$j('input[name="authId"]').val(Json.top.auth_id);
+
+					$j('.tit-detail-right').html('<span>客户通话报告<span style="font-size:14px;">('+reportNumber+')</span></span><span style="float:right; margin-right:20px; font-size: 14px;">报告生成日期：'+reportDate+'日</span>');
+					$j('#sjthbg1').html(Json.top.user_name);			//姓名
+					$j('#sjthbg2').html(Json.top.user_number);			//手机
+					$j('#sjthbg3').html(Json.top.cert_num);			//身份证
+					$j('#sjthbg4').html(Json.top.user_email);				//邮箱
+					$j('#sjthbg5').html(Json.top.credit_level);			//会员等级
+					$j('#sjthbg6').html(Json.top.cert_addr);			//户籍地址
+					$j('#sjthbg7').html(Json.top.real_info);							//是否以实名
+					$j('#sjthbg8').html(Json.check);							//姓名与运营商数据匹配结果
+					if(Json.callDetails.length <= 0){
+						str1 = "<tr><td colspan='8'>没有数据...</td></tr>";
+					}else{
+						for(var i = 0; i<Json.callDetails.length; i++){
+							str1 +="<tr>"+
+										/*"<td>"+Json.callDetails[i].operator+"</td>"+*/
+										"<td>"+Json.top.user_number+"</td>"+
+										"<td>"+Json.zone+"</td>"+
+										"<td>"+Json.callDetails[i].months+"</td>"+
+										"<td>"+formatSeconds(Json.callDetails[i].whenCallingLong)+"</td>"+
+										"<td>"+formatSeconds(Json.callDetails[i].calledLength)+"</td>"+
+										"<td>"+Json.callDetails[i].msg+"</td>"+
+										"<td>"+Json.callDetails[i].call_cost/100+"</td>"+
+									"</tr>";
+						}
+					}
+				}
+				/*if(Json.callDetails != null && Json.callDetails != ""){
+					$j("#pageIndex").val(Json.callDetails.pageIndex);
+					$j("#pageTotal").val(Json.callDetails.pageTotal);
+					$j("#dangqianye").html(Json.callDetails.pageIndex);
+					$j("#zongye").html(Json.callDetails.pageTotal);
+					str2 = thDetail(Json.callDetails.callRecordList);
+				}*/
+				//每月通话统计
+				$j('#sjthbg9').html(str1);
+				/*//通话详情统计
+				$j('#sjthbg10').html(str2);*/
+
+                ajaxDxjl($j('#searchFrm').serialize());
+			}
+		});
+
+		//查询
+		$j('#searchSubmit').click(function(){
+			var data = $j('#searchFrm').serialize();
+			ajaxDxjl(data);
+		})
+		
+		
+		//分页
+		$j('.page-td a').click(function(){
+			_type = $j(this).data("type");
+			var pageNow = 1;								//分页参数
+			var pageIndex = parseInt($j("#pageIndex").val());			//当前页号
+			var pageTotal = parseInt($j("#pageTotal").val());			//总页数
+			if(_type == "first"){
+				pageNow = 1;
+			}else if(_type == "prev"){
+				if(pageIndex > 1){
+					pageNow = pageIndex-1;
+				}else{
+					return false;
+				}
+			}else if(_type == "next"){
+				if(pageIndex < pageTotal){
+					pageNow = pageIndex+1;
+				}else{
+					return false;
+				}
+			}else if(_type == "last"){
+				pageNow = pageTotal;
+			}else{
+				alert("错误");
+			}
+			$j("#pageIndex").val(pageNow);
+			var data = $j("#searchFrm").serialize();
+			ajaxDxjl(data);
+		});
+		
+		
+		var CountNum = 0;
+		//排序(通话次数)
+		$j('#thCount').click(function(){
+			if(CountNum == 0){
+				CountNum = 1;
+			}else{
+				CountNum = 0;
+			}
+			$j('#paixu').val(CountNum);
+			var data = $j("#searchFrm").serialize();
+			ajaxDxjl(data);
+		})
+		
+		var timeOutNum = 3;
+		//排序(通话时长)
+		$j('#thTimeOut').click(function(){
+			if(timeOutNum == 3){
+				timeOutNum = 4;
+			}else{
+				timeOutNum = 3;
+			}
+			$j('#paixu').val(timeOutNum);
+			var data = $j("#searchFrm").serialize();
+			ajaxDxjl(data);
+		})
+	})
+	
+	function ajaxDxjl(data){
+		$j.ajax({
+			url:$j("body").attr("contextpath")+'/credit/shujumohe/callDetailsStatistics.do',
+			type:'POST',
+			data:data,
+			dataType:'json',
+			success:function(Json){
+				$j("#pageIndex").val(Json.pageIndex);
+				$j("#pageTotal").val(Json.pageTotal);
+				$j("#dangqianye").html(Json.pageIndex);
+				$j("#zongye").html(Json.pageTotal);
+				$j('#sjthbg10').html(thDetail(Json.callRecordList));
+			}
+		});
+	}
+	
+	function formatSeconds(value) {
+	    var theTime = parseInt(value);// 秒
+	    var theTime1 = 0;// 分
+	    var theTime2 = 0;// 小时
+	    if(theTime > 60) {
+	        theTime1 = parseInt(theTime/60);
+	        theTime = parseInt(theTime%60);
+            if(theTime1 > 60) {
+	            theTime2 = parseInt(theTime1/60);
+	            theTime1 = parseInt(theTime1%60);
+            }
+	    }
+        var result = ""+parseInt(theTime)+"秒";
+        if(theTime1 > 0) {
+        result = ""+parseInt(theTime1)+"分"+result;
+        }
+        if(theTime2 > 0) {
+        result = ""+parseInt(theTime2)+"小时"+result;
+        }
+	    return result;
+	}
+	
+	
+	
+	function updateContacts(mobile){
+		$j.ajax({
+			url:$j("body").attr("contextpath")+'/credit/jiean/byMobileNoGetMessage.do',
+			type:'POST',
+			data:{'clientId':$j('#client_id').val(),'mobileNo':mobile},
+			dataType:'json',
+			success:function(Json){
+				var stra = '<div class="upContacts">'+
+							'<form id="upContactsFrm">'+
+								'<table>'+
+									'<tbody>'+
+										'<tr>'+
+											'<td>手机号码：</td>'+
+											'<td>'+mobile+'<input type="hidden" name="mobileNo" value="'+mobile+'" /><input type="hidden" name="clientId" value="'+$j("#client_id").val()+'" /></td>'+
+											'<td class="pad30">联系人姓名：</td>'+
+											'<td><input type="text" name="name" value="'+Json.list[0].relationobjName+'" /></td>'+
+										'</tr>'+
+										'<tr>'+
+											'<td>关系：</td>'+
+											'<td>'+
+												'<select class="sele" id="relationType" name="relationType">'+
+													'<option value="102011">本人</option>'+
+													'<option value="102012">父亲</option>'+
+													'<option value="102013">母亲</option>'+
+													'<option value="102014">兄弟</option>'+
+													'<option value="102015">姐妹</option>'+
+													'<option value="102016">配偶</option>'+
+													'<option value="102017">子女</option>'+
+													'<option value="102018">亲戚</option>'+
+													'<option value="102019">朋友</option>'+
+													'<option value="102020">同事</option>'+
+													'<option value="102021">同学</option>'+
+													'<option value="102022">未知</option>'+
+												'</select>'+
+											'</td>'+
+											'<td class="pad30">联系人来源：</td>'+
+											'<td>'+
+												'<select class="sele" name="clientSource" id="clientSource">'+
+													'<option value="130701">三方数据</option>'+
+													'<option value="130702">客户填写</option>'+
+													'<option value="130703">网上获取</option>'+
+													'<option value="130704">电核得知</option>'+
+												'</select>'+
+											'</td>'+
+										'</tr>'+
+										'<tr>'+
+											'<td>备注：</td>'+
+											'<td colspan="3">'+
+												'<textarea name="remarks" class="textCon">'+Json.list[0].remarks+'</textarea>'+
+											'</td>'+
+										'</tr>'+
+									'</tbody>'+
+								'</table>'+
+							'</form>'+
+						'</div>';
+				var btnFn = function(e) {
+					var data = $j('#upContactsFrm').serialize();
+					$j.ajax({
+						url:$j("body").attr("contextpath")+'/credit/jiean/updateMessage.do',
+						type:'POST',
+						data:data,
+						dataType:'json',
+						success:function(Json){
+							if(Json.results == "OK"){
+								alert("保存成功");
+							}else{
+								alert("保存失败");
+							}
+						}
+					});
+				};
+				easyDialog.open({
+					container: {
+						header: '编辑联系人信息',
+						content: stra,
+						yesFn: btnFn,
+						noFn: true
+					},
+					width:430,
+					fixed: false
+				});
+				$j('select[name="relationType"]').find('option[value="'+Json.list[0].relationType+'"]').attr('selected','selected');
+				$j('select[name="clientSource"]').find('option[value="'+Json.list[0].clientSource+'"]').attr('selected','selected');
+			}
+		});
+	}
+	
+	//通话详情汇总
+	function thDetail(data){
+		var str = "";
+		if(data.length <= 0){
+			str = "<tr><td colspan='13'>没有数据...</td></tr>";
+		}else{
+			for(var i = 0; i<data.length; i++){
+			    var contact_name="";
+                var talkTime;
+			    var talkTime1;
+                var talkTime2;
+			    if(data[i].contact_name!=null&&data[i].contact_name!="") {
+                    contact_name = data[i].contact_name
+                }
+                talkTime1=parseInt(data[i].calledLength);
+                talkTime2=parseInt(data[i].whenCallingLong);
+                talkTime=talkTime1+talkTime2;
+				str +="<tr>"+
+							"<td>"+data[i].call_other_number+"</td>"+
+							"<td>"+contact_name+"</td>"+			//姓名
+							"<td>"+""+"</td>"+				//关系
+							"<td>"+nullFmt(data[i].contactType)+"</td>"+				//号码分类
+							"<td>"+nullFmt(data[i].contactName)+"</td>"+				//号码标签
+							"<td>"+""+"</td>"+				//归属地
+							"<td>"+data[i].callingNumber+"</td>"+
+							"<td>"+formatSeconds(data[i].whenCallingLong)+"</td>"+
+							"<td>"+data[i].numberOfTimes+"</td>"+
+							"<td>"+formatSeconds(data[i].calledLength)+"</td>"+
+							"<td>"+data[i].callNumber+"</td>"+
+							"<td>"+ formatSeconds(talkTime)+"</td>"+
+							"<td>"+data[i].lastWeek+"</td>"+
+							"<td>"+data[i].recentJanuary+"</td>"+
+							"<td>"+data[i].recentMarch+"</td>"+
+						"</tr>";
+			}
+		}
+		
+		return str;
+	}
+    function nullFmt(cellvalue) {
+	    console.log(cellvalue)
+        if (cellvalue == undefined || cellvalue == null || cellvalue == "null") {
+            return "";
+        }
+        return cellvalue;
+    }
+</script>

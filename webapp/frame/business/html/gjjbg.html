@@ -1,0 +1,334 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+    .w120{width: 120px;}
+    .w40{width: 40%; text-align: left !important; padding-left: 10px;}
+    .yh-tit-bor{margin-top: 10px; margin-bottom: 10px; padding-left: 10px;}
+    .padLeft{padding-left: 10px}
+    .titTimeDv{
+       position:relative;left:990px;top:-80px;
+    }
+    .yh-table-news tfoot td{text-align:center;}
+    .sonTime{display: block; float: left;  padding-left: 10px; box-sizing:border-box; margin-bottom: 10px;}
+    .shebao{height:80px;background:#eee;line-height: 80px;}
+
+</style>
+<div class="nogjjDv" style="display:none;">无此公积金数据，客户未授权！</div>
+<div class="yh-news-dv sjthbgDv">
+    <div class="single-table-dv" style="padding-bottom: 20px;">
+        <div class="shebao">
+        <div style="font-size:18px;padding-left: 8px;">公积金报告</div>
+        <div class="titTimeDv">
+            <p class="sonTime">
+                报告编号：<span id="bg_code" ></span>
+            </p>
+            <p class="sonTime">
+                报告时间：<span id="bg_time"></span>
+            </p>
+        </div>
+        </div>
+        <p class="yh-tit-bor">
+            <span>基本信息</span>
+        </p>
+        <table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td class="BgColor w120">姓名</td>
+                <td>
+                    <span class="gjjjbxx1"></span>
+                </td>
+                <td class="BgColor w120">身份证号码</td>
+                <td>
+                    <span class="gjjjbxx2"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">年龄</td>
+                <td>
+                    <span class="gjjjbxx3"></span>
+                </td>
+                <td class="BgColor w120">身份证号所在地</td>
+                <td>
+                    <span class="gjjjbxx4"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">性别</td>
+                <td colspan="3">
+                    <span class="gjjjbxx5"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="yh-tit-bor">
+            <span>公积金基本信息</span>
+        </p>
+        <table class="tabcustomPeo yh-table-news gjjTable" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td class="BgColor w120">地址</td>
+                <td class="gjjBaseInfo1" style="text-align:left;padding-left:10px;"></td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">登记姓名</td>
+                <td class="gjjBaseInfo2" style="text-align:left;padding-left:10px;"></td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">单位名称</td>
+                <td class="gjjBaseInfo3" style="text-align:left;padding-left:10px;"></td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">末次缴纳日期</td>
+                <td class="gjjBaseInfo4" style="text-align:left;padding-left:10px;"></td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">末次缴纳存额（元）</td>
+                <td class="gjjBaseInfo5" style="text-align:left;padding-left:10px;"></td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">总转入金额（元）</td>
+                <td class="gjjBaseInfo6" style="text-align:left;padding-left:10px;"></td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">总转出金额（元）</td>
+                <td class="gjjBaseInfo7" style="text-align:left;padding-left:10px;"></td>
+            </tr>
+            <tr>
+                <td class="BgColor w120">账户余额（元）</td>
+                <td class="gjjBaseInfo8" style="text-align:left;padding-left:10px;"></td>
+            </tr>
+            </tbody>
+
+        </table>
+        <input type="hidden" name="pageIndex" id="pageIndex"  />
+        <input type="hidden" name="pageNow" id="pageNow" />
+        <input type="hidden" id="pageSize">
+        <input type="hidden" id="pageTotal" />
+        <input type="hidden" id="totalCount">
+        <form action="post" id="gjjForm">
+        <table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+
+            <thead>
+            <tr>
+                <td colspan="5" class="BgColor padLeft" style="text-align: left;">公积金账单</td>
+            </tr>
+            <tr>
+                <td>交易日期</td>
+                <td>单位名称</td>
+                <td>转入金额</td>
+                <td>转出金额</td>
+                <td>业务描述</td>
+            </tr>
+            </thead>
+            <tbody class="gjjzd">
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="13" class="page-td">
+                    <a href="javascript:;" data-type="first" >首页<span></span></a>
+                    <a href="javascript:;" data-type="prev">上一页</a>
+                    <a href="javascript:;" data-type="next">下一页</a>
+                    <a href="javascript:;" data-type="last" >末页<span ></span></a>
+                    <font id="dangqianye"></font>  /  <font id="zongye"></font>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+        </form>
+    </div>
+</div>
+<script>
+    $j(function(){
+        var clientId = $j('#client_id').val();
+        $j.ajax({
+            url:$j("body").attr("contextpath")+'/credit/gjj/gjjBasicInfo.do',
+            type:'POST',
+            data:{"clientId":clientId},
+            dataType:'json',
+            success:function(Json){
+                if(Json.result == 'success'){
+                    var GjjBaseVoInfo = Json.GjjBaseVoInfo;
+                    $j('#bg_code').html(GjjBaseVoInfo.gjj_order_no);
+                    $j('#bg_time').html(dateFormat(GjjBaseVoInfo.create_date,"day"));
+                    $j('.gjjjbxx1').html(GjjBaseVoInfo.name);
+                    $j('.gjjjbxx2').html(GjjBaseVoInfo.identity_code);
+                    $j('.gjjjbxx3').html(GjjBaseVoInfo.birthday);
+                    $j('.gjjjbxx4').html(GjjBaseVoInfo.home_address);
+                    $j('.gjjjbxx5').html(GjjBaseVoInfo.gender);
+                    $j('.gjjBaseInfo1').html(GjjBaseVoInfo.address);
+                    $j('.gjjBaseInfo2').html(GjjBaseVoInfo.name);
+                    $j('.gjjBaseInfo3').html(GjjBaseVoInfo.corpName);
+                    $j('.gjjBaseInfo4').html(dateFormat(GjjBaseVoInfo.lastDealTime,"day"));
+                    $j('.gjjBaseInfo5').html(GjjBaseVoInfo.lastIncom/100);
+                    $j('.gjjBaseInfo6').html(0);
+                    $j('.gjjBaseInfo7').html(GjjBaseVoInfo.allOutcome/100);
+                    $j('.gjjBaseInfo8').html(GjjBaseVoInfo.balance/100);
+                    var GjjBillRecord = Json.GjjBillRecordList.pageList;
+                    var str = '';
+                    for(var i = 0;i<GjjBillRecord.length;i++){
+                        var income="";
+                        var outcome="";
+                        var desc="";
+                        if(GjjBillRecord[i].income!=null){
+                            income=GjjBillRecord[i].income;
+                        }
+                        if(GjjBillRecord[i].outcome!=null){
+                            outcome=GjjBillRecord[i].outcome;
+                        }
+                        if(GjjBillRecord[i].descs!=null){
+                            desc=GjjBillRecord[i].descs;
+                        }
+                        str += '<tr>'
+                            +'<td>'+dateFormat(GjjBillRecord[i].dealTime,"day")+'</td>'
+                            +'<td>'+GjjBillRecord[i].corpName+'</td>'
+                            +'<td>'+income/100+'</td>'
+                            +'<td>'+outcome/100+'</td>'
+                            +'<td>'+desc+'</td>'
+                        '</tr>'
+                    }
+                    $j('.gjjzd').html(str);
+
+                    $j("#pageIndex").val(Json.pageIndex);
+                    $j("#pageTotal").val(Json.pageTotal);
+                    $j("#dangqianye").html(Json.pageIndex);
+                    $j("#zongye").html(Json.pageTotal);
+                }else{
+                    $j('.nogjjDv').css('display','block');
+                    $j('.sjthbgDv').css('display','none');
+                }
+
+            }
+        });
+       // page();
+    })
+
+
+    //分页
+    $j('.page-td a').click(function(){
+        _type = $j(this).data("type");
+        var pageNow = 1;								//分页参数
+        var pageIndex = parseInt($j("#pageIndex").val());			//当前页号
+        var pageTotal = parseInt($j("#pageTotal").val());			//总页数
+        if(_type == "first"){
+            pageNow = 1;
+        }else if(_type == "prev"){
+            if(pageIndex > 1){
+                pageNow = pageIndex-1;
+            }else{
+                return false;
+            }
+        }else if(_type == "next"){
+            if(pageIndex < pageTotal){
+                pageNow = pageIndex+1;
+            }else{
+                return false;
+            }
+        }else if(_type == "last"){
+            pageNow = pageTotal;
+        }else{
+            alert("错误");
+        }
+        var clientId = $j('#client_id').val();
+        $j("#pageIndex").val(pageNow);
+        var data = $j("#searchFrm").serialize();
+        ajaxDxjl(clientId,pageNow);
+    });
+
+    function ajaxDxjl(clientId,pageIndex){
+
+        $j.ajax({
+            url:$j("body").attr("contextpath")+'/credit/gjj/gjjBasicInfo.do',
+            type:'POST',
+            data:{"clientId":clientId,"pageIndex":pageIndex},
+            dataType:'json',
+            success:function(Json){
+                if(Json.result == 'success'){
+                    var GjjBaseVoInfo = Json.GjjBaseVoInfo;
+                    $j('#bg_code').html(GjjBaseVoInfo.gjj_order_no);
+                    $j('#bg_time').html(dateFormat(GjjBaseVoInfo.create_date,"day"));
+                    $j('.gjjjbxx1').html(GjjBaseVoInfo.name);
+                    $j('.gjjjbxx2').html(GjjBaseVoInfo.identity_code);
+                    $j('.gjjjbxx3').html(GjjBaseVoInfo.birthday);
+                    $j('.gjjjbxx4').html(GjjBaseVoInfo.home_address);
+                    $j('.gjjjbxx5').html(GjjBaseVoInfo.gender);
+                    $j('.gjjBaseInfo1').html(GjjBaseVoInfo.address);
+                    $j('.gjjBaseInfo2').html(GjjBaseVoInfo.name);
+                    $j('.gjjBaseInfo3').html(GjjBaseVoInfo.corpName);
+                    $j('.gjjBaseInfo4').html(dateFormat(GjjBaseVoInfo.lastDealTime,"day"));
+                    $j('.gjjBaseInfo5').html(GjjBaseVoInfo.lastIncom/100);
+                    $j('.gjjBaseInfo6').html(0);
+                    $j('.gjjBaseInfo7').html(GjjBaseVoInfo.allOutcome/100);
+                    $j('.gjjBaseInfo8').html(GjjBaseVoInfo.balance/100);
+                    var GjjBillRecord = Json.GjjBillRecordList.pageList;
+                    var str = '';
+                    for(var i = 0;i<GjjBillRecord.length;i++){
+                        var income="";
+                        var outcome="";
+                        var desc="";
+                        if(GjjBillRecord[i].income!=null){
+                            income=GjjBillRecord[i].income;
+                        }
+                        if(GjjBillRecord[i].outcome!=null){
+                            outcome=GjjBillRecord[i].outcome;
+                        }
+                        if(GjjBillRecord[i].descs!=null){
+                            desc=GjjBillRecord[i].descs;
+                        }
+                        str += '<tr>'
+                            +'<td>'+dateFormat(GjjBillRecord[i].dealTime,"day")+'</td>'
+                            +'<td>'+GjjBillRecord[i].corpName+'</td>'
+                            +'<td>'+income/100+'</td>'
+                            +'<td>'+outcome/100+'</td>'
+                            +'<td>'+desc+'</td>'
+                        '</tr>'
+                    }
+                    $j('.gjjzd').html(str);
+                    /*$j("#pageIndex").val(Json.GjjBillRecordList.pageIndex);
+                    $j("#dangqianye").val(Json.GjjBillRecordList.pageNow);
+                    $j("#pageTotal").val(Json.GjjBillRecordList.pageTotal);*/
+
+
+                    $j("#pageIndex").val(Json.pageIndex);
+                    $j("#pageTotal").val(Json.pageTotal);
+                    $j("#dangqianye").html(Json.pageIndex);
+                    $j("#zongye").html(Json.pageTotal);
+                   /* $j('#sjthbg10').html(thDetail(Json.callRecordList));*/
+                }else{
+                    $j('.nogjjDv').css('display','block');
+                    $j('.sjthbgDv').css('display','none');
+                }
+
+            }
+        });
+    }
+
+    //   时间戳转成date（time_str为时间戳、type：day只显示年月日，hour显示年月日时分秒）
+    function dateFormat(time_str,type){
+        var date = new Date(time_str),
+            h,m,s;
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        if(date.getHours() < 10){
+            h = "0"+date.getHours() + ':';
+        }else{
+            h = date.getHours() + ':';
+        }
+        if(date.getMinutes() < 10){
+            m = "0"+date.getMinutes() + ':';
+        }else{
+            m = date.getMinutes() + ':';
+        }
+        if(date.getSeconds() < 10){
+            s = "0"+date.getSeconds();
+        }else{
+            s = date.getSeconds();
+        }
+        if(type == "hour"){
+            return Y+M+D+h+m+s;
+        }else if(type == "day"){
+            return Y+M+D;
+        }
+    }
+
+</script>

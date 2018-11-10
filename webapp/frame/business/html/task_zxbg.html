@@ -1,0 +1,50 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+  .disNone{display:none;}
+			.active{background:#0066ff;color:#FFFFFF!important;}
+			.creditReport{border-bottom:2px solid #949494;width:60%;}
+			.creditReport .tabs-btn a{display:inline-block;color:#169bd5;text-decoration: none;font-size:15px;}
+</style>
+<div class='creditReport'>
+					<div class='tabs-btn'>
+						<a href='#tab1'>征信报告-汇总</a>
+						<a href='#tab2'>央行征信报告</a>
+						<a href='#tab3'>反欺诈报告</a>
+						<a href='#tab4'>黑名单报告</a>
+						<a href='#tab5'>移动运营商报告</a>
+						<a href='#tab6'>行业数据汇总</a>
+						<input type='hidden' id='purpose' value='1' />
+					</div>
+					<div id="tab1" class="tabs-son">
+						<span>123</span>
+					</div>
+					<div id="tab2" class="tabs-son disNone">
+						<span>456</span>
+					</div>
+					<div id="tab3" class="tabs-son disNone">
+						<span>789</span>
+					</div>
+					<div id="tab4" class="tabs-son disNone">
+						<span>825</span>
+					</div>
+					<div id="tab5" class="tabs-son disNone">
+						<span>8424</span>
+					</div>
+					<div id="tab6" class="tabs-son disNone">
+						<span>72876874</span>
+					</div>
+		</div>
+<script>
+	$(document).on('click','.tabs-btn a',function(e){
+			e.preventDefault();
+			var _id = $(this).attr('href');
+			$(this).addClass('active').siblings().removeClass('active');
+			$('.tabs-son').hide();
+			$(_id).show();
+			console.log($("#purpose").val(_id.substring(_id.length-1,_id.length)));
+	})
+	$(document).on('mouseover','.tabs-btn a',function(e){
+			e.preventDefault();
+			$(this).addClass('active').siblings().removeClass('active');
+	})
+</script>

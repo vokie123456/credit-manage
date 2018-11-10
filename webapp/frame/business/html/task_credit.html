@@ -1,0 +1,169 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+  .disNone{display:none;}
+  #nav-content-dv{margin-top:15px;}
+			.active{background:#0066ff;color:#FFFFFF!important;}
+			#detail-ri-tab{border-bottom:2px solid #949494;width:98.7%;}
+			#detail-ri-content {
+			    width: 100%;
+			    padding-left: 4px;
+			    box-sizing: border-box;
+			}
+	#detail-ri-tab a{display:inline-block;width:100px;text-align:center;}
+</style>
+    <div id="nav-content-dv">
+				<div class="nav-dv"  style="min-height: 1308px;">
+				<div class="tab-dv-a" id="detail-ri-tab">
+					<a data-type="yhzxbg" data-title="央行征信报告">征信报告汇总</a>
+					<a data-type="yhzxbgnew" data-title="征信报告汇总">央行征信报告</a>
+					<a data-type="fqzbg" data-title="反欺诈报告">反欺诈报告</a>
+					<a data-type="hmdbg" data-title="黑名单报告(惠誉)">黑名单报告</a>
+					<a data-type="sjthbg" data-title="移动运营商">移动运营商报告</a>
+					<a data-type="hysjhz" data-title="行业数据汇总">行业数据汇总</a>
+					<a data-type="gjjbg" data-title="公积金">公积金</a>
+					<a data-type="dsbg" data-title="电商报告">电商报告</a>
+				</div>
+				<div class="ui-helper-clearfix">
+					<div id="detail-ri-content" class="ui-helper-clearfix">
+
+					</div>
+				</div>
+					
+   </div>
+	
+ <script>
+$j(document).ready(function(){
+	var client_id = $j('#client_id').val();
+	$j('#detail-ri-content').load($j("body").attr("contextpath") + "/credit/bank/central_bank_credit_report.do?see=see&clientId="+client_id).prev().text();
+     $j(document).delegate('#detail-ri-tab a','click',function(e){
+         e.preventDefault();
+         $j(this).addClass('active').siblings().removeClass('active');
+         detail_ri($j(this));
+	 })
+
+	$j(document).delegate('#detail-ri-tab a','mouseover',function(e){
+		e.preventDefault();
+		$j(this).addClass('active').siblings().removeClass('active');
+	})
+})
+
+	
+
+function detail_ri($this){
+	var path_url = $j("body").attr("contextpath") +"/frame/business";
+	var type = $this.data('type');
+	var title = $this.data('title');
+	if(type == 'null' || type == null){
+		return false;
+	}
+	if($this.hasClass('detail-lf-a')){
+		$j('#detail-ri-tab a').removeClass('point-color');
+		$j('#detail-ri-tab a[data-type='+type+']').addClass('point-color');
+	}else{
+		$this.addClass('point-color').siblings().removeClass('point-color');
+	}
+	//央行征信报告页面跳转
+	if(type == 'sczl'){
+		$j('#detail-ri-content').load($j("body").attr("contextpath") + "/loanbefore/commonperson/fileDatum.do").prev().text(title);
+		return false;
+	}else if(type == 'yhzxbg'){
+		/*str = '<p class="seach-p">'
+					+'报告编号:'
+					+'<select>'
+						+'<option value="2015030902000173496480" selected="">2015030902000173496480</option>'
+						+'<option value="2015010105678173496480">2015010105678173496480</option>'
+						+'<option value="2014112404500445666480">2014112404500445666480</option>'
+					+'</select>'
+				+'</p>';*/
+		/*$('#detail-ri-content')
+		.load(path_url+"/html/"+type+".html")
+		.prev().text(title).append(str);*/
+		
+		var client_id = $j('#client_id').val();
+		
+		$j('#detail-ri-content').load($j("body").attr("contextpath") + "/credit/bank/central_bank_credit_report.do?see=see&clientId="+client_id).prev().text(title);
+		return false;
+	}else if(type == 'yhzxbgnew'){
+		
+		/*str = '<p class="seach-p">'
+			+'报告编号:'
+			+'<select>'
+				+'<option value="2015030902000173496480" selected="">2015030902000173496480</option>'
+				+'<option value="2015010105678173496480">2015010105678173496480</option>'
+				+'<option value="2014112404500445666480">2014112404500445666480</option>'
+			+'</select>'
+		+'</p>';*/
+
+	var client_id = $j('#client_id').val();
+	$('#detail-ri-content').load($j("body").attr("contextpath") + "/credit/bank/yuanShiBaoWen.do?clientId="+client_id).prev().remove();
+	return false;
+	}else if(type == 'shgrxftz'){			//个人消费特征页面跳转
+		var clientId = $j('#client_id').val();
+		str = '<p class="seach-p">'
+				+'</p>';
+		$('#detail-ri-content')
+		.load($j("body").attr("contextpath") + "/credit/zhongCXPersonInfo/byClientGetAll.do?clientId="+clientId+"&type=2")
+		.prev().text("中诚信银行卡信息")
+		.append(str);
+		return false;
+	}else if(type == 'wxf'){				//万象分页面跳转
+		var clientId = $j('#client_id').val();
+		str = '<p class="seach-p">'
+					/*+'报告编号:'
+					+'<select>'
+						+'<option value="2015030902000173496480" selected="">2015030902000173496480</option>'
+						+'<option value="2015010105678173496480">2015010105678173496480</option>'
+						+'<option value="2014112404500445666480">2014112404500445666480</option>'
+					+'</select>'
+					+'<button>获取</button>'*/
+				+'</p>';
+		$('#detail-ri-content')
+		.load($j("body").attr("contextpath") + "/credit/zhongCXPersonInfo/byClientIdGetZCX.do?clientId="+clientId)
+		.prev().text(title)
+		.append(str);
+		return false;
+	}
+//	else if(type == 'gjj' ){       		//公积金跳转
+//		var clientId = $j('#client_id').val();
+//		$j('#detail-ri-content')
+//		.load($j("body").attr("contextpath") + "/credit/gjj/gjjBasicInfo.do?clientId="+clientId)
+//		.prev().text("");
+//		return false;
+//	}
+	else{	//其他页面跳转
+		$j('#detail-ri-content')
+		.load(path_url+"/html/"+type+".html")
+			.prev().text(title);
+			return false;
+	}
+}
+//时间戳转成date（time_str为时间戳、type：day只显示年月日，hour显示年月日时分秒）
+function dateFormat(time_str,type){
+	var date = new Date(time_str),
+		h,m,s;
+	Y = date.getFullYear() + '-';
+	M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+	D = date.getDate() + ' ';
+	if(date.getHours() < 10){
+		h = "0"+date.getHours() + ':';
+	}else{
+		h = date.getHours() + ':';
+	}
+	if(date.getMinutes() < 10){
+		m = "0"+date.getMinutes() + ':';
+	}else{
+		m = date.getMinutes() + ':';
+	}
+	if(date.getSeconds() < 10){
+		s = "0"+date.getSeconds();
+	}else{
+		s = date.getSeconds();
+	}
+	if(type == "hour"){
+		return Y+M+D+h+m+s;
+	}else if(type == "day"){
+		return Y+M+D;
+	}
+}
+
+</script> 

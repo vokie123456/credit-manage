@@ -1,0 +1,14 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<div class="seach-dv">
+	<span>日期：</span>
+	<input id="inp_dxjl_st" type="text" class="buyDate runcode" name="start" />
+	——
+	<input id="inp_dxjl_en" type="text" class="buyDate runcode" name="end" />
+	<script>
+		$(function(){
+			J('#inp_dxjl_st').calendar({ maxDate:'#inp_dxjl_en' });
+			J('#inp_dxjl_en').calendar({ minDate:'#inp_dxjl_st' });
+		})
+	</script>
+	<a href="javascript:;">查询</a>
+</div>

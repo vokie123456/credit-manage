@@ -1,0 +1,446 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+	.w120{width: 120px;}
+	.w40{width: 40%; text-align: left !important; padding-left: 10px;}
+	.yh-tit-bor{margin-top: 10px; margin-bottom: 10px; padding-left: 10px;}
+	.padLeft{padding-left: 10px}
+	.titTimeDv::after{
+		content: "";
+		display: block;
+		height: 0;
+		line-height: 0;
+		font-size: 0;
+		visibility: hidden;
+		clear: both;
+	}
+	.sonTime{display: block; float: left; width: 50%; padding-left: 10px; box-sizing:border-box; margin-bottom: 10px;}
+</style>
+<div class="yh-news-dv sjthbgDv">
+	<div class="single-table-dv" style="padding-bottom: 20px;">
+		<div class="titTimeDv">
+			<p class="sonTime">
+				报告时间：<span id="hysjhz1"></span>
+			</p>
+			<p class="sonTime">
+				查询时间：<span id="hysjhz3"></span>
+			</p>
+			<p style=" padding-left: 10px;">
+				报告编号：<span id="hysjhz2"></span>
+			</p>
+		</div>
+		<p class="yh-tit-bor">
+			<span>基本信息</span>
+		</p>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td class="BgColor w120">姓名</td>
+					<td>
+						<span id="hysjhz4"></span>
+					</td>
+					<td class="BgColor w120">身份证</td>
+					<td>
+						<span id="hysjhz5"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w120">年龄</td>
+					<td>
+						<span id="hysjhz6"></span>
+					</td>
+					<td class="BgColor w120">身份证号所在地</td>
+					<td>
+						<span id="hysjhz7"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w120">性别</td>
+					<td>
+						<span id="hysjhz8"></span>
+					</td>
+					<td class="BgColor w120">手机所属运营商</td>
+					<td>
+						<span id="hysjhz9"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w120">手机号码</td>
+					<td>
+						<span id="hysjhz10"></span>
+					</td>
+					<td class="BgColor w120">身份证号码有效</td>
+					<td>
+						<span id="hysjhz11"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="yh-tit-bor">
+			<span>注册信息</span>
+		</p>
+		<table class="tabcustomPeo yh-table-news sjthbgTable" cellspacing="0" cellpadding="0">
+			
+			<thead>
+			<tr>
+			  <td class="BgColor">注册App数量</td>
+			  <td class="appcount"></td>
+			</tr>
+			  <tr>
+			    <td class="BgColor">注册App的类型</td>
+			    <td class="BgColor">注册的数量</td>
+			  </tr>
+			  
+			</thead>
+			<tbody id="sjthbg9">
+			
+			</tbody>
+		</table>
+		<p class="yh-tit-bor">
+			<span>黑名单信息</span>
+		</p>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td class="BgColor w40">灰度分</td>
+					<td>
+						<span id="hysjhz20"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">直接联系人在黑名单数量</td>
+					<td>
+						<span id="hysjhz21"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">直接联系人总数</td>
+					<td>
+						<span id="hysjhz22"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">间接联系人在黑名单数量</td>
+					<td>
+						<span id="hysjhz23"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">引起黑名单的直接联系人数量</td>
+					<td>
+						<span id="hysjhz24"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">引起黑名单的直接联系人占比</td>
+					<td>
+						<span id="hysjhz25"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">被标记的黑名单分类</td>
+					<td>
+						<span id="hysjhz26"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">手机和姓名是否在黑名单</td>
+					<td>
+						<span id="hysjhz27"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">身份证姓名黑名单更新时间</td>
+					<td>
+						<span id="hysjhz28"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">身份证和姓名是否在黑名单</td>
+					<td>
+						<span id="hysjhz29"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="BgColor w40">姓名和电话黑名单更新信息</td>
+					<td>
+						<span id="hysjhz30"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0" style="border-top: none;">
+			<thead>
+				<tr>
+					<td colspan="5" class="BgColor padLeft" style="text-align: left;">黑名单详细信息</td>
+				</tr>
+			</thead>
+			<tbody id="hmd"></tbody>
+					
+			
+		</table>
+		<p class="yh-tit-bor">
+			<span>机构查询统计</span>
+		</p>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0">
+		
+			<thead>
+			<tr >
+			<td class="BgColor">机构查询统计</td>
+			    <td class="searchstatictis" colspan="2">绑定时间</td>
+			</tr>
+				<tr>
+					<td class="BgColor">查询日期</td>
+					<td class="BgColor">机构类型</td>
+					<td class="BgColor">是否是本机构查询</td>
+				</tr>
+			</thead>
+			<tbody id="hysjhz32">
+				
+			</tbody>
+		</table>
+		<p class="yh-tit-bor">
+			<span>手机存疑</span>
+		</p>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+			<thead>
+			  <tr>
+			    <td class="BgColor">绑定的身份证</td>
+			    <td class="BgColor">绑定时间</td>
+			    
+			  </tr>
+			</thead>
+			<tbody id="hysjhz33">
+				
+			</tbody>
+		</table>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+			<thead>
+			
+			  <tr>
+			    <td class="BgColor">机构所属分类</td>
+			    <td class="BgColor">查询时间</td>
+			  </tr>
+			</thead>
+			
+			<tbody id="hysjhz34">
+				
+			</tbody>
+		</table>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+			<thead>
+			  <tr>
+			    <td class="BgColor">绑定姓名 </td>
+			    <td class="BgColor">绑定时间</td>
+              </td>
+			  </tr>
+			</thead>
+			<tbody id="hysjhz35">
+				
+			</tbody>
+		</table>
+		<p class="yh-tit-bor">
+			<span>身份证存疑</span>
+		</p>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+			<thead>
+			  <tr>
+			    <td class="BgColor">绑定姓名</td>
+			    <td class="BgColor">绑定时间</td>
+              </td>
+			  </tr>
+			</thead>
+			<tbody id="hysjhz36">
+				
+			</tbody>
+		</table>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+			<thead>
+			  <tr>
+			    <td class="BgColor">所属省份 </td>
+			    <td class="BgColor">所属运营商</td>
+			    
+			    <td class="BgColor">存疑手机号码</td>
+			     <td class="BgColor">所在地区</td>
+			      <td class="BgColor">最后一次绑定时间</td>
+              </td>
+			  </tr>
+			</thead>
+			<tbody id="hysjhz37">
+				
+			</tbody>
+		</table>
+		<table class="tabcustomPeo yh-table-news" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+			<thead>
+			  <tr>
+			    <td class="BgColor">机构所属分类 </td>
+			    <td class="BgColor">查询时间</td>
+              </td>
+			  </tr>
+			</thead>
+			<tbody id="hysjhz38">
+				
+			</tbody>
+		</table>
+	
+	</div>
+</div>
+<script>
+	$(function(){
+		$.ajax({
+			url:'/credit/miguan/byClientIdGetQuery.do',
+			type:'POST',
+			/* data:{'clientId':'1799','creditId':'12'}, */
+			data:{'clientId':$('input[name="clientId"]').val(),'creditId':$('input[name="creditId"]').val()},
+			dataType:'json',
+			success:function(data){
+				if(data.listMiGuan == null || data.listMiGuan == ""){
+					return false;
+				}
+				var Json = eval("("+data.listMiGuan[0].resultData+")");
+					$("#hysjhz1").html(dateFormat(data.listMiGuan[0].reportTime,"hour"));				//报告时间
+					$("#hysjhz2").html(data.listMiGuan[0].reportNum);				//报告编号
+					$("#hysjhz3").html(dateFormat(parseInt(data.listMiGuan[0].updateTime),"hour"));				//查询时间
+				var user_basic = Json.data.user_basic;			//基本信息
+					$("#hysjhz4").html(user_basic.user_name);			
+					$("#hysjhz5").html(user_basic.user_idcard);			
+					$("#hysjhz6").html(user_basic.user_age);			
+					$("#hysjhz7").html(user_basic.user_province + user_basic.user_city + user_basic.user_region);			
+					$("#hysjhz8").html(user_basic.user_gender);			
+					$("#hysjhz9").html(user_basic.user_phone_operator);			
+					$("#hysjhz10").html(user_basic.user_phone);			
+					$("#hysjhz11").html(user_basic.user_idcard_valid ? "是" : "否");
+				
+				var user_register_orgs = Json.data.user_register_orgs.register_orgs_statistics; 		//注册信息
+				var str = '';
+				$('.appcount').html(Json.data.user_register_orgs.register_cnt)
+				for(var j = 0;j<user_register_orgs.length;j++){
+					str += '<tr><td id="hysjhz17">'+user_register_orgs[j].label+'</td>'
+					+'<td id="hysjhz16">'+user_register_orgs[j].count+'</td></tr>'
+				}
+				$('#sjthbg9').html(str);
+				/* 	$("#hysjhz12").html(user_register_orgs.user_name);			
+					$("#hysjhz16").html(user_register_orgs.user_name);			
+					$("#hysjhz17").html(user_register_orgs.user_name);			
+					$("#hysjhz18").html(user_register_orgs.user_name);			
+					$("#hysjhz19").html(user_register_orgs.user_name);	 */
+				
+				var user_blacklist = Json.data.user_blacklist;			//黑名单信息
+					$("#hysjhz20").html(Json.data.user_gray.phone_gray_score);		//黑中介分数			
+					$("#hysjhz21").html(Json.data.user_gray.contacts_class1_blacklist_cnt);		//直接联系人在黑名单数量			
+					$("#hysjhz22").html(Json.data.user_gray.contacts_class1_cnt);		//直接联系人总数			
+					$("#hysjhz23").html(Json.data.user_gray.contacts_class2_blacklist_cnt);		//间接联系人在黑名单数量
+					$("#hysjhz24").html(Json.data.user_gray.contacts_router_cnt);		//引起黑名单的直接联系人数量	
+					$("#hysjhz25").html(Json.data.user_gray.contacts_router_ratio);		//引起黑名单的直接联系人占比	
+					$("#hysjhz26").html(user_blacklist.blacklist_category);		//被标记的黑名单分类
+					$("#hysjhz27").html(user_blacklist.blacklist_name_with_phone ? "是" : "否");		//手机和姓名是否在黑名单	
+					$("#hysjhz28").html(user_blacklist.blacklist_update_time_name_idcard);		//身份证姓名黑名单更新时间	
+					$("#hysjhz29").html(user_blacklist.blacklist_name_with_idcard ? "是" : "否");		//身份证和姓名是否在黑名单	
+					$("#hysjhz30").html();		//姓名和电话黑名单更新信息	
+					var str = ''
+					var blacklist_details = user_blacklist.blacklist_details;
+					for(var i = 0; i<blacklist_details.length; i++){			//黑名单详细信息
+						/* switch(user_blacklist.blacklist_details[i].details_key){
+							case '地址':
+								$('#hysjhz31_0').html(user_blacklist.blacklist_details[i].details_value);
+								break;
+							case '累计借入本金':
+								$('#hysjhz31_1').html(user_blacklist.blacklist_details[i].details_value);
+								break;
+							case '性别':
+								$('#hysjhz31_2').html(user_blacklist.blacklist_details[i].details_value);
+								break;
+							case '累计已还金额':
+								$('#hysjhz31_3').html(user_blacklist.blacklist_details[i].details_value);
+								break;
+							case '最大逾期天数':
+								$('#hysjhz31_4').html(user_blacklist.blacklist_details[i].details_value);
+								break;
+						} */
+						str += '<tr><td class="BgColor">'+blacklist_details[i].details_key+'</td>'
+						        +'<td id="hysjhz31_1">'+blacklist_details[i].details_value+'</td><tr>'
+						
+					}
+					$('#hmd').html(str);
+					var user_searched_history_by_orgs = Json.data.user_searched_history_by_orgs;		//机构查询统计
+						var user_searched_history_str = "";
+					$('.searchstatictis').html(Json.data.user_searched_statistic.searched_org_cnt);
+						for(var j = 0; j<user_searched_history_by_orgs.length; j++){
+							user_searched_history_str += "<tr><td>"+user_searched_history_by_orgs[j].searched_date+"</td>"+
+														 "<td>"+user_searched_history_by_orgs[j].searched_org+"</td>"+
+														 "<td>"+(user_searched_history_by_orgs[j].org_self ? "是" : "否")+"</td></tr>";
+						}
+						$('#hysjhz32').html(user_searched_history_str);
+						
+					
+					var user_phone_suspicion = Json.data.user_phone_suspicion.phone_with_other_idcards;			//手机存疑
+					var phone_applied_in_orgs = Json.data.user_phone_suspicion.phone_applied_in_orgs;
+					var phone_with_other_names = Json.data.user_phone_suspicion.phone_with_other_names;
+					var str = '';
+					var ss = '';
+					var st = '';
+					for(var j = 0;j<user_phone_suspicion.length;j++){
+						str += '<tr><td id="hysjhz17">'+user_phone_suspicion[j].susp_idcard+'</td>'
+						+'<td id="hysjhz16">'+user_phone_suspicion[j].susp_updt+'</td></tr>'
+					}
+					for(var j = 0;j<phone_applied_in_orgs.length;j++){
+						ss += '<tr><td id="hysjhz16">'+phone_applied_in_orgs[j].susp_org_type+'</td>'
+						+'<td id="hysjhz17">'+phone_applied_in_orgs[j].susp_updt+'</td></tr>'
+					}
+					for(var j = 0;j< phone_with_other_names.length;j++){
+						st += '<tr><td id="hysjhz16">'+phone_with_other_names[j].susp_name+'</td>'
+						+'<td id="hysjhz17">'+phone_with_other_names[j].susp_updt+'</td></tr>'
+					}
+					$('#hysjhz33').html(str);
+					$('#hysjhz34').html(ss);
+					$('#hysjhz35').html(st);
+					
+					
+					/* 
+						$('#hysjhz33 td').eq(0).html(user_phone_suspicion.phone_with_other_names.susp_name);
+						$('#hysjhz33 td').eq(1).html(user_phone_suspicion.phone_with_other_names.susp_updt);
+						$('#hysjhz34 td').eq(0).html(user_phone_suspicion.phone_with_other_idcards.susp_idcard);
+						$('#hysjhz34 td').eq(1).html(user_phone_suspicion.phone_with_other_idcards.susp_updt);
+						$('#hysjhz35 td').eq(0).html(user_phone_suspicion.phone_applied_in_orgs.susp_org_type);
+						$('#hysjhz35 td').eq(1).html(user_phone_suspicion.phone_applied_in_orgs.susp_updt); */
+						
+					var user_idcard_suspicion = Json.data.user_idcard_suspicion;		//身份证存疑
+					var idcard_with_other_names = user_idcard_suspicion.idcard_with_other_names;
+					var idcard_with_other_phones = user_idcard_suspicion.idcard_with_other_phones;
+					var idcard_applied_in_orgs = user_idcard_suspicion.idcard_applied_in_orgs;
+					var user_searched_history_by_orgs = user_idcard_suspicion.user_searched_history_by_orgs;
+					var str = '';
+					var ss = '';
+					var st = '';
+					var tr = '';
+					for(var j = 0;j<idcard_with_other_names.length;j++){
+						str += '<tr><td id="hysjhz16">'+idcard_with_other_names[j].susp_name+'</td>'
+						+'<td id="hysjhz17">'+idcard_with_other_names[j].susp_updt+'</td></tr>'
+					}
+					for(var j = 0;j<idcard_with_other_phones.length;j++){
+						ss += '<tr><td id="hysjhz16">'+idcard_with_other_phones[j].susp_phone_province+'</td>'
+						+'<td id="hysjhz17">'+idcard_with_other_phones[j].susp_phone_operator+'</td>'
+						+'<td id="hysjhz17">'+idcard_with_other_phones[j].susp_phone_city+'</td>'
+						+'<td id="hysjhz17">'+idcard_with_other_phones[j].susp_phone+'</td>'
+						+'<td id="hysjhz17">'+idcard_with_other_phones[j].susp_updt+'</td></tr>'
+					}
+					for(var j = 0;j<idcard_applied_in_orgs.length;j++){
+						st += '<tr><td id="hysjhz16">'+idcard_applied_in_orgs[j].susp_org_type+'</td>'
+						+'<td id="hysjhz17">'+idcard_applied_in_orgs[j].susp_updt+'</td></tr>'
+					}
+					
+					$('#hysjhz36').html(str);
+					$('#hysjhz37').html(ss);
+					$('#hysjhz38').html(st);
+					
+						/* $('#hysjhz36 td').eq(0).html(user_idcard_suspicion.idcard_with_other_names.susp_name);
+						$('#hysjhz36 td').eq(1).html(user_idcard_suspicion.idcard_with_other_names.susp_updt);
+						$('#hysjhz37 td').eq(0).html(user_idcard_suspicion.idcard_with_other_phones.susp_phone);
+						$('#hysjhz37 td').eq(1).html(user_idcard_suspicion.idcard_with_other_phones.susp_updt);
+						$('#hysjhz37 td').eq(2).html(user_idcard_suspicion.idcard_with_other_phones.susp_phone_operator);
+						$('#hysjhz37 td').eq(3).html(user_idcard_suspicion.idcard_with_other_phones.susp_phone_province);
+						$('#hysjhz38 td').eq(0).html(user_idcard_suspicion.idcard_applied_in_orgs.susp_org_type);
+						$('#hysjhz38 td').eq(1).html(user_idcard_suspicion.idcard_applied_in_orgs.susp_updt); */
+			}
+		});
+	})
+</script>

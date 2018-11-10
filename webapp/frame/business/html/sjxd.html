@@ -1,0 +1,33 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script>
+	$(function(){
+		$.ajax({
+			url:"html/json.json",
+			type:"get",
+			dataType:'text',
+			success:function(data){
+				var str = "";
+				for(var i = 0; i < data.length; i++){
+					str += "<tr>";
+					str += "<td>"+data.name+"</td>";
+					str += "<td>"+data.sex+"</td>";
+					str += "<td>"+data.age+"</td>";
+					str += "</tr>";
+				}
+				$("#tbodyId").append(str);
+			}
+		});
+	})
+</script>
+<table>
+	<thead>
+		<tr>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+		</tr>
+	</thead>
+	<tbody id="tbodyId">
+
+	</tbody>
+</table>

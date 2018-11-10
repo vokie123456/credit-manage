@@ -1,0 +1,67 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<form id="dlsj_Frm">
+	<div class="seach-dv">
+		<input type="hidden" name="userId" id="user_id_dlsj" />
+		<span>日期：</span>
+		<input id="inp_dxjl_st" type="text" class="buyDate runcode" name="start" />
+		——
+		<input id="inp_dxjl_en" type="text" class="buyDate runcode" name="end" />
+		<script>
+			$(function(){
+				J('#inp_dxjl_st').calendar({ maxDate:'#inp_dxjl_en' });
+				J('#inp_dxjl_en').calendar({ minDate:'#inp_dxjl_st' });
+			})
+		</script>
+		<a id="dlsj_Btn" href="javascript:;">查询</a>
+	</div>
+</form>
+<table id="dlsj_dv" class="def-table dxjl-table" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr>
+			<td>日期</td>
+			<td>登录IP</td>
+			<td>LBS定位</td>
+			<td>IP定位</td>
+			<td>手机机型</td>
+			<td class="w33">设备号</td>
+			<td>本机号码</td>
+		</tr>
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+<script>
+	$(function(){
+		$('#user_id_dlsj').val($("#user_id").val());
+		ajaxDlsj_IP({userId:$("#user_id").val()});
+		$('#dlsj_Btn').click(function(){
+			var data = $('#dlsj_Frm').serialize();
+			ajaxDlsj_IP(data);
+		})
+	})
+	
+	function ajaxDlsj_IP(data){
+		$.ajax({
+			url:$j("body").attr("contextpath")+"/operating/userBasicInformation/byUserIdGetRecordLog.do",
+			type:'get',
+			data:data,
+			dataType:'json',
+			success:function(Json){
+				var str = "";
+				for(var i = 0; i<Json.length; i++){
+					str += "<tr>"
+								+"<td>"+dateFormat(Json[i].loginTime,"hour")+"</td>"
+								+"<td>"+Json[i].loginIp+"</td>"
+								+"<td>"+Json[i].appLbs+"</td>"
+								+"<td>"+Json[i].lbsLocation+"</td>"
+								+"<td>"+Json[i].mobileType+"</td>"
+								+"<td>"+Json[i].machineCode+"</td>"
+								+"<td>"+Json[i].selfMobile+"</td>"
+							+"</tr>";
+				}
+				$("#dlsj_dv").find("tbody").html(str);
+			}
+		});
+	}
+</script>

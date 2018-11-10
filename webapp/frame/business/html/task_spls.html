@@ -1,0 +1,303 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<div class="approvalHis">
+			<div class="tit-detail-left">
+			审批预警
+		    </div>
+		    <table style="border:1px solid #ccc;width:100%;margin-top:15px;height:120px;">
+		    	<tbody>
+		    		<tr>
+		    			<td>
+		    				<span>历次审批预警:<span>拒绝<span class="refuse"></span>${STATUS_JJ } </span>&nbsp;&nbsp;&nbsp;&nbsp;
+		    				               <span>取消<span class="cancel"></span>${STATUS_ESC }</span>&nbsp;&nbsp;&nbsp;&nbsp;
+		    				               <span>申请<span class="application"></span>${tasksCount }</span>
+		    				</span>
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td>
+		    				<div>短信清洗关键词：</div>
+		    				<div>
+		    					<a href="">欠钱<span></span>次</a>
+		    					<a href="">欠款<span></span>次</a>
+		    					<a href="">拖欠<span></span>次</a>
+		    					<a href="">欺诈<span></span>次</a>
+		    					<a href="">过期<span></span>次</a>
+		    					<a href="">超期<span></span>次</a>
+		    					<a href="">逾期<span></span>次</a>
+		    					<a href="">起诉<span></span>次</a>
+		    					<a href="">法院<span></span>次</a>
+		    					<a href="">赌博<span></span>次</a>
+		    					<a href="">污点<span></span>次</a>
+		    					<a href="">失信<span></span>次</a>
+		    					<a href="">还钱<span></span>次</a>
+		    					<a href="">未通过<span></span>次</a>
+		    				</div>
+		    			</td>
+		    		</tr>
+		    	</tbody>
+		    </table>
+			
+			<div class="tit-detail-left">
+				审核记录
+			</div>
+			<c:set var="dd" value=""/>
+	<c:forEach items="${task }" var="ite">
+	
+     <c:choose>
+				<c:when test="${ite.taskOperCode == '100060201'}">
+					<table class="table-text-left tabcustomPeo mark mark-center" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr class="BgColor">
+								<td class="w150">审核结果</td>
+								<td>审核人</td>
+								<td>审核开始时间</td>
+								<td>审核结束时间</td>
+								<td>审批产品</td>
+								<td class="w85">初审金额</td>
+								<td>初审意见</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>${ite.task_name }&nbsp;</td>
+								<td>${ite.user_name }</td>
+								<td>${ite.audit_date }</td>
+								<td>${ite.finalTime }&nbsp;</td>
+								<td>${creditMaxProductName } - ${creditSubProductName }&nbsp;</td>
+								<td>${ite.first_money }&nbsp;</td>
+								<td>${ite.operReasonRemark }&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</c:when>
+				<c:when test="${ite.taskOperCode == '100060202'}">
+					<table class="table-text-left tabcustomPeo mark mark-center" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr class="BgColor">
+								<td class="w150">审核结果</td>
+								<td class="w150">审核人</td>
+								<td>审核开始时间</td>
+								<td>审核结束时间</td>
+								<td>初审拟批产品产品</td>
+								<td>初审意见</td>
+								<td>拒绝原因</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>${ite.task_name }&nbsp;</td>
+								<td>${ite.user_name }</td>
+								<td>${ite.audit_date }</td>
+								<td>${ite.finalTime }&nbsp;</td>
+								<td>${creditMaxProductName } - ${creditSubProductName }&nbsp;</td>
+								<td>${ite.operReasonRemark }&nbsp;</td>
+								<td>${ite.oper_reason_name }&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</c:when>
+				<c:when test="${ite.taskOperCode == '100060203'}">
+					<table class="table-text-left tabcustomPeo mark mark-center" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr class="BgColor">
+								<td class="w150">审核结果</td>
+								<td class="w150">审核人</td>
+								<td>审核开始时间</td>
+								<td>审核结束时间</td>
+								<td>补件理由</td>
+								<td>补件备注</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>${ite.task_name }&nbsp;</td>
+								<td>${ite.user_name }</td>
+								<td>${ite.audit_date }</td>
+								<td>${ite.finalTime }&nbsp;</td>
+								<td>${ite.addMaterial }&nbsp;</td>
+								<td>${ite.operReasonRemark }&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</c:when>
+				<c:when test="${ite.taskOperCode == '100060403'}">
+					<table class="table-text-left tabcustomPeo mark mark-center" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr class="BgColor">
+								<td class="w150">审核结果</td>
+								<td>审核人</td>
+								<td>审核开始时间</td>
+								<td>审核结束时间</td>
+								<td>退回原因</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>${ite.task_name }&nbsp;</td>
+								<td>${ite.user_name }</td>
+								<td>${ite.audit_date }</td>
+								<td>${ite.finalTime }&nbsp;</td>
+								<td>${ite.operReasonRemark }&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</c:when>
+				<c:when test="${ite.taskOperCode == '100060401'}">
+					<table class="table-text-left tabcustomPeo mark mark-center" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr class="BgColor">
+								<td class="w150">审核结果</td>
+								<td>审核人</td>
+								<td>审核开始时间</td>
+								<td>审核结束时间</td>
+								<td class="w85">终审金额</td>
+								<td>终审意见</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>${ite.task_name }&nbsp;</td>
+								<td>${ite.user_name }</td>
+								<td>${ite.audit_date }</td>
+								<td>${ite.finalTime }&nbsp;</td>
+								<td>${ite.final_money }&nbsp;</td>
+								<td>${ite.operReasonRemark }&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</c:when>
+				<c:when test="${ite.taskOperCode == '100060402'}">
+					<table class="table-text-left tabcustomPeo mark mark-center" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr class="BgColor">
+								<td class="w150">审核结果</td>
+								<td>审核人</td>
+								<td>审核开始时间</td>
+								<td>审核结束时间</td>
+								<td>拒绝原因</td>
+								<td>初审意见</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>${ite.task_name }&nbsp;</td>
+								<td>${ite.user_name }</td>
+								<td>${ite.audit_date }</td>
+								<td>${ite.finalTime }&nbsp;</td>
+								<td>${ite.oper_reason_name }&nbsp;</td>
+								<td>${ite.operReasonRemark }&nbsp;</td>
+								
+							</tr>
+						</tbody>
+					</table>
+				</c:when>
+				<c:otherwise>
+					<table class="table-text-left tabcustomPeo mark mark-center" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr class="BgColor">
+								<td class="w150">审核结果</td>
+								<td>审核人</td>
+								<td>审核开始时间</td>
+								<td>审核结束时间</td>
+								<td>拒绝原因</td>
+								<td>初审意见</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>${ite.task_name }&nbsp;</td>
+								<td>${ite.user_name }</td>
+								<td>${ite.audit_date }</td>
+								<td>${ite.finalTime }&nbsp;</td>
+								<td>${ite.oper_reason_name }&nbsp;</td>
+								<td>${ite.operReasonRemark }&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		</c:forEach>
+			<div class="tit-detail-left">
+				历史审批情况
+			</div>
+			<table class="table-text-left tabcustomPeo" cellpadding="0" cellspacing="0" >
+				<thead style="background:#dde4ea;">
+					<tr>
+						<td>案件编号</td>
+						<td>申请产品</td>
+						<td>申请期限</td>
+						<td>申请额度</td>
+						<td>状态</td>
+						<td>授信产品</td>
+						<td>授信金额</td>
+						<td>拒绝/取消原因</td>
+						<td>申请时间</td>
+						<td>审批人员</td>
+						<td>审批结束时间</td>
+					</tr>
+				</thead>
+				<tbody>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tbody>
+			</table>
+			<div class="tit-detail-left">
+				电核记录
+			</div>
+			<div class="elecRecord">
+				<ul>
+					<li><a href="">本人</a></li>
+					<li><a href="">父母</a></li>
+					<li><a href="">配偶</a></li>
+					<li><a href="">亲戚</a></li>
+					<li><a href="">朋友</a></li>
+					<li><a href="">同事</a></li>
+					<li><a href="">其他</a></li>
+				</ul>
+				<table id="bank_dv" class="table-text-left tabcustomPeo" cellpadding="0" cellspacing="0">
+					<thead style="background:#ccc;">
+						<tr>
+							<td>姓名</td>
+							<td>关系</td>
+							<td>号码</td>
+							<td>号码来源</td>
+							<td>拨打时间</td>
+							<td>通话情况</td> 
+							<td>身份核查结果</td>
+							<td>电核结果</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="8">备注:</td>
+						</tr>
+						<tr>
+							<td colspan="8">
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>

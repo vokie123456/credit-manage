@@ -1,0 +1,876 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+    .file-left{
+       float: left;
+		width: 60%;
+		border-left: 1px solid #ccc;
+		min-height: 500px;
+    }
+    .sczl-right{
+      float: left;
+		width: 30%;
+		border-left: 1px solid #ccc;
+		min-height: 500px;
+    }
+    .sczl-right .cllx{margin:10px;}
+    .sczl-right .cllx select{width:150px;}
+    .sczl-right .fileBtn{width:50%;margin:20px auto;margin-top:200px;}
+    .button{border-radius:10px;text-align:center;}
+    .active{color:blue;}
+</style>
+<div class="dl-left">
+	<dl id="file_dl">
+		<dt>
+			<a>客户上传</a>
+		</dt>
+		<dd><a href="#sfz_dv">身份证信息</a></dd>
+		<dd><a href="#fczl_dv">房产资料</a></dd>
+		<dd><a href="#zdxx_dv">账单信息</a></dd>
+		<dd><a href="#clzm_dv">财力证明</a></dd>
+		<dd><a href="#qwgz_dv">全委公正</a></dd>
+		<dd><a href="#dyhz_dv">抵押回执</a></dd>
+		<dd class="not"><a href="#clzm_dv">工资流水</a></dd>
+	</dl>
+</div>
+<div class="file-left">
+    <div class="tit-detail-left">
+				    手机信息
+			    </div>
+	<div class="tit-after" id="sfz_dv">
+		<span>
+			身份证资料
+			<a data-type="sfz" class="remark-click" title="编辑备注" href="javascript:"><img src="../../images/newsZr/u371.png" /></a>
+		</span>
+	</div>
+	<div class="file-img-dv" data-type="sfz">
+		<div class="w555">
+			<div class="dv-img">
+				<img id="carId_Positive" src="../../images/newsZr/u298.png" />
+				<span class="examine-before">身份证正面</span>
+				<p class="cart-update">
+					<a class="ok-cart">
+						<img src="../../images/newsZr/u410.png" />
+					</a>
+					<a class="no-cart">
+						<img src="../../images/newsZr/u414.png" />
+					</a>
+				</p>
+			</div>
+			<div class="dv-img">
+				<img id="carId_Opposite" src="../../images/newsZr/u298.png" />
+				<span class="examine-before">身份证反面</span>
+				<p class="cart-update">
+					<a class="ok-cart">
+						<img src="../../images/newsZr/u410.png" />
+					</a>
+					<a class="no-cart">
+						<img src="../../images/newsZr/u414.png" />
+					</a>
+				</p>
+			</div>
+			<div class="dv-img">
+				<img id="carId_hand" src="../../images/newsZr/u298.png" />
+				<span class="examine-before">手持</span>
+				<p class="cart-update">
+					<a class="ok-cart">
+						<img src="../../images/newsZr/u410.png" />
+					</a>
+					<a class="no-cart">
+						<img src="../../images/newsZr/u414.png" />
+					</a>
+				</p>
+			</div>
+		</div>
+		<div class="remark-dv">
+			<table id="carId_remark_table" cellpadding="0" cellspacing="0">
+				<thead>
+					<tr>
+						<td>备注时间</td>
+						<td>备注人</td>
+						<td>备注内容</td>
+						<td>附件</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>2016/03/30</td>
+						<td>敖冰妍</td>
+						<td>不通过</td>
+						<td>
+							<a href="1.jpg">1.jpg</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="tit-after" id="fczl_dv">
+		<span>
+			房产资料
+			<a data-type="fczl" class="remark-click" title="编辑房产信息" href="javascript:"><img src="../../images/newsZr/u371.png" /></a>
+		</span>
+	</div>
+	<div class="file-img-dv" data-type="fczl">
+		<div class="w555">
+			<div class="dv-img">
+				<img src="../../images/newsZr/u298.png" />
+				<span class="examine-before">房产1</span>
+				<p class="cart-update">
+					<a class="ok-cart">
+						<img src="../../images/newsZr/u410.png" />
+					</a>
+					<a class="no-cart">
+						<img src="../../images/newsZr/u414.png" />
+					</a>
+				</p>
+			</div>
+		</div>
+		<div class="remark-dv">
+			<p><span>编号：5665776888（已产调）</span>&nbsp;&nbsp;&nbsp;<span>产权人：本人/非本人/本人和XXX</span></p>
+			<p>所在地：<span id="house_address">上海市闵行区上中西路1011弄2号203</span></p>
+			<p>是否抵押：无 / 有，抵押给XXX</p>
+			<p>购入时间：<span id="house_time">2016年4月2日</span></p>
+			<p>登记价格：<span id="house_price">300万元</span></p>
+			<p>备注：<span id="house_remark">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></p>
+		</div>
+	</div>
+	<div class="tit-after" id="zdxx_dv">
+		<span>
+			账单信息
+			<a data-type="zdxx" class="remark-click" title="编辑备注" href="javascript:"><img src="../../images/newsZr/u371.png" /></a>
+		</span>
+	</div>
+	<div class="file-img-dv" data-type="zdxx">
+		<div class="w555">
+			<div class="dv-img">
+				<img src="../../images/newsZr/u298.png" />
+				<span class="examine-before">账单1</span>
+				<p class="cart-update">
+					<a class="ok-cart">
+						<img src="../../images/newsZr/u410.png" />
+					</a>
+					<a class="no-cart">
+						<img src="../../images/newsZr/u414.png" />
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="tit-after" id="clzm_dv">
+		<span>
+			财力证明
+			<a data-type="clzm" class="remark-click" title="编辑备注" href="javascript:"><img src="../../images/newsZr/u371.png" /></a>
+		</span>
+	</div>
+	<div class="file-img-dv" data-type="zdxx">
+		<div class="w555">
+			<div class="dv-img">
+				<img src="../../images/newsZr/u298.png" />
+				<span class="examine-before">财力证明1</span>
+				<p class="cart-update">
+					<a class="ok-cart">
+						<img src="../../images/newsZr/u410.png" />
+					</a>
+					<a class="no-cart">
+						<img src="../../images/newsZr/u414.png" />
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="tit-after" id="qwgz_dv">
+		<span>
+			全委公正
+			<a data-type="qwgz" class="remark-click" title="编辑备注" href="javascript:"><img src="../../images/newsZr/u371.png" /></a>
+		</span>
+	</div>
+	<div class="tit-after" id="dyhz_dv">
+		<span>
+			抵押回执
+			<a data-type="dyhz" class="remark-click" title="编辑备注" href="javascript:"><img src="../../images/newsZr/u371.png" /></a>
+		</span>
+	</div>
+	<div class="tit-after">
+		<span class="typeText">身份证号</span>
+	</div>
+	<div class="file-img-dv" style="padding-top: 0;">
+		<p style="margin-bottom: 10px;">百度搜索结果如下图所示</p>
+		<img id="other_img" class="file-img" src="../../images/newsZr/u298.png" />
+		<p>备注：<span id="other_remark">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></p>
+	</div>
+</div>
+<div class="sczl-right">
+   <div class="tit-detail-left">
+				    材料上传
+			    </div>
+	<div class="tit-after" id="sfz_dv">
+   <span>
+		 材料上传
+		<a data-type="clsc" class="remark-click" title="编辑备注" href="javascript:"><img src="../../images/newsZr/u371.png" /></a>
+	</span>
+	</div>
+	<div class="cllx">
+	   <span>材料类型:</span>
+	   <select name="imageType">
+	       <option value="">请选择</option>
+	       <option value="1">身份证资料</option>
+	   </select>
+	</div>
+	<div><button class="button" id="hkBtn">文件选择</button></div>
+	<div>
+	   <img src="" alt="" id="preview" style="width:200px;height:200px;"/>
+	</div>
+	<div class="fileBtn">
+	   <button class="button upload">上传</button>
+	   <button class="button">取消</button>
+	</div>
+</div>
+<form action="/base/api/upload.do" id="uploadForm" method="post" enctype="multipart/form-data" style="display:none;">
+			<input id="myFile" type="file" name="file" />
+</form>
+
+<script>
+
+
+
+var huijie_Url = "",					//慧捷API接口地址
+huijie_Url1 = "",					//慧捷API接口地址
+zhiqiang_Url = "",					//智强api接口地址
+zhiqiang_img_Url = "";		//智强图片访问地址
+web_img_Url = "";		//智强图片访问地址
+file_zr_editor = Object;										//html编辑器
+window.basePathBody = $j("body").attr("contextpath") ;
+
+$(function(){
+	alert(123);
+	huijie_Url = $j("body").attr("contextpath")+"/operating/userBasicInformation";
+	zhiqiang_Url = $j("body").attr("contextpath")+"/";
+	zhiqiang_img_Url = $j("body").attr("contextpath")+"/base/api/transmit.do?_system_type=pic&_url=";
+    web_img_Url = $j("body").attr("contextpath")+"/base/api/transmit.do?_system_type=pic&_url=";
+
+    huijie_Url1 = $j("body").attr("contextpath")+"/operating/userBasicInformation";
+	//上传资料查看大图
+	$(document).on('click','#hkBtn',function(){
+		$('#myFile').click();
+	})
+	$(document).on('change','#myFile',function(){
+		var file = $(this).val();
+		var ext=file.substring(file.lastIndexOf('.')+1);
+		console.log(ext);
+        if(ext=='png' || ext =='jpg' || ext!='jpeg' || ext=='xlsx'|| ext=='pdf' || ext=='doc' || ext=='docx'){
+            $('#uploadForm').submit();
+            return;
+        }
+        alert('图片的格式必须为png或者jpeg格式或者excel格式或者pdf格式或者word格式');
+        return;
+
+    });
+	
+	$('#uploadForm').ajaxForm({
+		dataType: 'json',
+		success: function(Json){
+			if(Json.status == '1'){
+				$('#preview').attr('src','http://192.168.1.74:8080/file/upload/'+Json.data[0])
+			}else{
+				alert(Json.msg);
+			}
+		}
+	})
+	$('.fileBtn .upload').click(function(){
+		var cllxText = $('select[name="imageType"]').val();
+		console.log(cllxText);
+		if(cllxText == ''){
+			alert('请选择上传的影像类型');
+			return false;
+		}
+	})
+	//上传资料审核点击效果
+	$(".cart-update").find('a').click(function(){
+		_this = $(this);
+		var strClass = "",
+			content = "";
+		switch(_this.attr('class')){
+			case 'ok-cart':
+				content = "确定审核通过？";
+				strClass = "examine-ok";
+				break;
+			case 'no-cart':
+				content = "确定审核不通过？";
+				strClass = "examine-no";
+				break;
+			default:
+				alert("异常");
+				break;
+		}
+		var btnFn = function(){
+			_this.parent()
+			.hide()
+			.prev()
+			.addClass(strClass);
+		};
+		easyDialog.open({
+		  container : {
+		    header : '审核提示框',
+		    content : content,
+		    yesFn : btnFn,
+		    noFn : true
+		  },
+		  width:300
+		});
+	});
+	
+	
+	//上传资料左侧目录点击效果
+	$('#file_dl').find('a').click(function(e){
+		e.preventDefault();
+		_this = $(this);
+		_id = _this.attr('href');
+		if(_this.parent().hasClass('not')){
+			return false;
+		}else{
+			_this.parent().addClass('active').siblings().removeClass('active');
+			var offset_top = $(_id).offset().top;
+			$("html, body").animate({scrollTop : offset_top});
+		}
+		
+	})
+	$(document).on('click','.dv-img',function(e){
+		e.preventDefault();
+		alert('123');
+		easyDialog.open({
+			container: {
+				header: '查看大图',
+				content: '<div style="width:100%;height:100%;text-align:center;"><img style="max-width:700px;" src="'+$(this).find("img").attr("src")+'" /></div>'
+			},
+			width:700,
+			fixed: false
+		});
+	})
+	$('input[name="clientId"]').val($('#client_id').val());
+	$('input[name="inputCode"]').val($('#user_id').val());
+	/* $('#up_houseId').val($('#user_id').val()); */
+	
+	
+	
+	//上传资料审核点击效果
+	$(".cart-update").find('a').click(function(e){
+		_this = $(this);
+		var strClass = "",							//根据当前审核状态改变图片的Class
+			content = "",							//弹框内容
+			typeBtn = "",							//判断当前点击的是审核通过还是不通过，ok为审核通过，no为审核不通过
+			_tag = _this.attr('class');
+		switch(_tag){
+			case 'ok-cart':
+				content = "确定审核通过？";
+				strClass = "examine-ok";
+				typeBtn = "ok";
+				break;
+			case 'no-cart':
+				content = "确定审核不通过？";
+				strClass = "examine-no";
+				typeBtn = "no";
+				break;
+			default:
+				alert("异常");
+				break;
+		}
+		var btnFn = function(){
+			var _checkStat = "",						//审核调用的借口地址(通过、不通过)
+				_id = _this.parents('.cart-update').prev().prev().data('id');
+			if(typeBtn == 'ok'){
+				_checkStat = "0";
+				
+			}else if(typeBtn == 'no'){
+				_checkStat = "1";
+			}else{
+				alert('异常');
+				return false;
+			}
+			$.ajax({								//请求审核借口
+				url:zhiqiang_Url+'v1/client/saveCheckFile.do',
+				data:{'id':_id, 'checkStat':_checkStat},
+				type:'get',
+				dataType:'json',
+				success:function(Json){
+					if(Json.result == 0){
+						easyDialog.open({
+						  container : {
+						    header : '审核提示框',
+						    content : '审核成功',
+						  },
+						  autoClose:2000
+						});
+						_this.parent()				//改变图片样式为当前审核状态所对应的样式（通过的样式和不通过的样式）
+							.hide()
+							.prev()
+							.addClass(strClass);
+						
+						if(typeBtn == "no"){
+							$('#examine_status').html("审核不通过").addClass("typeTextError");
+						}else if(typeBtn == "ok"){
+							examine_length = $("#sfz-dv").find('.examine-ok').length;
+							if(examine_length >= 3){
+								$('#examine_status').html("审核通过").removeClass("typeTextError");
+							}
+						}
+					}else{
+						alert("审核失败");
+					}
+				}
+				
+			});
+		};
+		easyDialog.open({
+		  container : {
+		    header : '审核提示框',
+		    content : content,
+		    yesFn : btnFn,
+		    noFn : true
+		  },
+		  width:300
+		});
+		e.stopPropagation();						//阻止事件冒泡
+	});
+	
+	
+	//上传资料左侧目录点击效果
+	$('#file_dl,.jp_btn').find('a').click(function(e){
+		e.preventDefault();
+		_this = $(this);
+		_id = _this.attr('href');
+		if(_this.parent().hasClass('not')){
+			return false;
+		}else{
+			_this.parent().addClass('active').siblings().removeClass('active');
+			var offset_top = $(_id).offset().top;
+			$("html, body").animate({scrollTop : offset_top});
+		}
+	})
+	//获取身份证资料模块信息
+	$.ajax({
+		url:zhiqiang_Url+"v1/client/getClientFiles.do",
+		type:"get",
+		data:{'clientId':$j("#client_id").val()},
+		//data:{'clientId':613},
+		dataType:'json',
+		success:function(Json){
+			if(Json == null){
+				return false;
+			}
+			var sfz_Str = "",				//身份证
+				clzm_Str = "",				//财力证明
+				gzzm_Str = "",				//工作证明
+				zxbg_Str = "";				//征信报告
+			if(Json.result == null){
+				return false;
+			}
+			var a = false;			//判断身份证是否审核通过
+			var b = 0;				//判断未审核
+			var c = 0;				//判断名下是否有房
+			for(var i = 0; i<Json.result.length; i++){
+				switch(Json.result[i].fileType){
+					case 1199://财力证明
+						clzm_Str += '<div class="dv-img">'
+										+'<img data-id="'+Json.result[i].id+'" data-checkStat="'+Json.result[i].checkStat+'" src="'+zhiqiang_img_Url+Json.result[i].fileUrl+'" />'
+//											+'<span class="examine-before" title="'+fcText(Json.result[i].sourceType)+'">'+fcText(Json.result[i].sourceType)+'</span>'
+										+'<span class="examine-before">工资流水</span>'
+									+'</div>';
+						break;
+					case 1200://身份证
+						var strClass = "";
+						if(Json.result[i].checkStat == 0){
+							strClass = 'examine-ok';
+							b++;
+						}else if(Json.result[i].checkStat == 1){
+							a = true;
+							strClass = 'examine-no';
+						}
+						if(Json.result[i].sourceType == 120001){
+							if(Json.result[i].checkStat != 2){
+								$("#carId_Positive").attr('src',zhiqiang_img_Url+Json.result[i].fileUrl)		//图片地址//身份证反面
+												.attr('data-id',Json.result[i].id)								//图片对应的id存放在data-id属性中
+												.next().addClass(strClass)
+												.parent().find('.cart-update').hide();
+							}else{
+								$("#carId_Positive").attr('src',zhiqiang_img_Url+Json.result[i].fileUrl)		//图片地址//身份证反面
+													.attr('data-id',Json.result[i].id);							//图片对应的id存放在data-id属性中
+							}
+						}else if(Json.result[i].sourceType == 120002){
+							if(Json.result[i].checkStat != 2){
+								$("#carId_Opposite").attr('src',zhiqiang_img_Url+Json.result[i].fileUrl)		//图片地址 //身份证正面
+												.attr('data-id',Json.result[i].id)								//图片对应的id存放在data-id属性中
+												.next().addClass(strClass)
+												.parent().find('.cart-update').hide();
+							}else{
+								$("#carId_Opposite").attr('src',zhiqiang_img_Url+Json.result[i].fileUrl)		//图片地址//身份证正面
+													.attr('data-id',Json.result[i].id);							//图片对应的id存放在data-id属性中
+																
+							}
+						}else if(Json.result[i].sourceType == 120003){
+							if(Json.result[i].checkStat != 2){
+								$("#carId_hand").attr('src',zhiqiang_img_Url+Json.result[i].fileUrl)			//图片地址//身份证正面
+												.attr('data-id',Json.result[i].id)								//图片对应的id存放在data-id属性中
+												.next().addClass(strClass)
+												.parent().find('.cart-update').hide();
+							}else{
+								$("#carId_hand").attr('src',zhiqiang_img_Url+Json.result[i].fileUrl)			//图片地址//身份证正面
+													.attr('data-id',Json.result[i].id);							//图片对应的id存放在data-id属性中
+							}
+						}else{
+							console.log("身份证sourceType值异常");
+						}
+						break;
+					case 1265:			//工作证明
+						gzzm_Str += '<div class="dv-img">'
+							+'<img data-id="'+Json.result[i].id+'" data-checkStat="'+Json.result[i].checkStat+'" src="'+zhiqiang_img_Url+Json.result[i].fileUrl+'" />'
+							+'<span class="examine-before">工作证明</span>'
+						+'</div>';
+						break;
+					case 1263:			//征信报告
+						zxbg_Str += '<div class="dv-img">'
+							+'<img data-id="'+Json.result[i].id+'" data-checkStat="'+Json.result[i].checkStat+'" src="'+zhiqiang_img_Url+Json.result[i].fileUrl+'" />'
+							+'<span class="examine-before">征信报告</span>'
+						+'</div>';
+						break;
+					default :
+						break;
+				}
+			}
+			
+			var fczl_zong_str = "",
+				accou_zong_str = "",
+				accou_Name_text = "";
+			for(var i = 0; i<Json.result2.length; i++){
+				var fczl_Str = "";
+				var zdzl_Str = "";
+				
+				for(var j = 0; j<Json.result2[i].houseFileList.length; j++){
+					if(Json.result2[i].houseFileList[j].houseType == 119801){
+						/* //增加名下有房
+						if(Json.result[i].fileUrl != ""){
+							c++;
+						} */
+						fczl_Str += '<div class="dv-img">'
+										+'<img data-id="'+Json.result2[i].houseFileList[j].id+'" data-checkStat="'+Json.result2[i].houseFileList[j].checkStat+'" src="'+zhiqiang_img_Url+Json.result2[i].houseFileList[j].houseFileUrl+'" />'
+//											+'<span class="examine-before" title="'+fcText(Json.result[i].sourceType)+'">'+fcText(Json.result[i].sourceType)+'</span>'
+									+'</div>';
+					}else{//账单信息
+						zdzl_Str += '<div class="dv-img">'
+										+'<img data-id="'+Json.result2[i].houseFileList[j].id+'" data-checkStat="'+Json.result2[i].houseFileList[j].checkStat+'" src="'+zhiqiang_img_Url+Json.result2[i].houseFileList[j].houseFileUrl+'" />'
+//											+'<span class="examine-before" title="'+fcText(Json.result[i].sourceType)+'">'+fcText(Json.result[i].sourceType)+'</span>'
+									+'</div>';
+						accou_Name_text += Json.result2[i].houseFileList[j].houseTypeName+';&nbsp;&nbsp;';
+					}
+				}
+				accou_zong_str += '<div class="w555 zd_clas">'
+										+'<p style="margin-bottom:20px; padding-right:40px;">房产'+(i+1)+'账单类型：&nbsp;&nbsp;&nbsp;</p>'
+										+zdzl_Str
+									+'</div>';
+				fczl_zong_str += '<div class="tit-after"><span>房产资料'+(i+1)
+										+'<a data-type="fczl" data-id="'+Json.result2[i].id+'" class="remark-click" title="编辑房产信息" href="javascript:"><img src="../../images/newsZr/u371.png" /></a>'
+									+'</span>';
+				if(i <= 0){
+					fczl_zong_str += '<a data-type="fczl1" class="remark-click-find">查看</a><a data-type="fczl_remark" data-code="1" class="remark-click">备注</a>';
+				}else{
+					fczl_zong_str += "";
+				}
+				fczl_zong_str += '</div>'
+									+'<div class="file-img-dv" data-type="fczl">'
+										+'<div class="w555">'
+											+fczl_Str
+										+'</div>'
+										+'<div class="remark-dv">'
+										+fcmsg(Json.result2[i].id,Json.result2[i].clientHouseDetailedVo)
+										+'</div>'
+										+'<div class="remark-dv" style="margin-top:20px;">'
+											
+										+'</div>'
+								+'</div>';
+			}
+			
+			//增加名下有房
+			/* if(c > 0){
+				$("#userContent20").html("名下有房");//名下是否有房
+			} else {
+				$("#userContent20").html("名下无房");
+			} */
+			if(b == 3){
+				$('#examine_status').html("审核通过").removeClass("typeTextError");
+			}else if(a){
+				$('#examine_status').html("审核不通过").addClass("typeTextError");
+			}else{
+				$('#examine_status').html("待审核")
+			}
+			$("#fczl_dv").html(fczl_zong_str);
+			$("#accou_img_dv").html(accou_zong_str);
+			$("#gzzm_img_dv").html(gzzm_Str);
+			$("#zxbg_img_dv").html(zxbg_Str);
+			//$("#clzm_img_dv").html(clzm_Str);
+			
+			//右侧备注
+			remark_ajax_init();
+		}
+	});
+	
+})
+
+
+//获取上传资料备注
+function remark_ajax_init(){
+	$.ajax({
+		type:"get",
+		url:huijie_Url+"/get_note.do",
+		data:{"user_id":$("#user_id").val()},
+		dataType:"json",
+		success:function(Json){
+			var carId = "carId";			//身份证备注
+			if(Json[carId] != null && Json[carId] != undefined){
+				if(Json[carId].length > 0){
+					$("#sfz_dv").find(".remark-click-find").show();
+				}
+			}
+			var bill = "bill";			//账单信息备注
+			if(Json[bill] != null && Json[bill] != undefined){
+				if(Json[bill].length > 0){
+					$("#zdxx_dv").find(".remark-click-find").show();
+				}
+			}
+			
+			var fczl = "fczl1";
+			if(Json[fczl] != null && Json[fczl] != undefined){
+				if(Json[fczl].length > 0){	//房产资料备注
+					$("#fczl_dv").find(".remark-click-find").show();
+				}
+			}
+			
+			var clzm = "clzm";			//财力证明备注
+			if(Json[clzm] != null && Json[clzm] != undefined){
+				if(Json[clzm].length > 0){
+					$("#clzm_dv").find(".remark-click-find").show();
+				}
+			}
+		}
+	});
+}
+
+//房产资料信息
+function fcmsg(_num,Json1_fc){
+	if(Json1_fc == null || Json1_fc == ""){
+		return "";
+	}
+	var _propertyOwner = "",
+		_ismortgage = "",
+		_address = "";
+	if(Json1_fc.propertyOwner == 1){
+		_propertyOwner = "本人";
+	}else if(Json1_fc.propertyOwner == 2){
+		_propertyOwner = "非本人";
+	}else if(Json1_fc.propertyOwner == 3){
+		_propertyOwner = "本人和" + Json1_fc.associates;
+	}
+	if(Json1_fc.ismortgage == 100111){
+		_ismortgage = "否";
+	}else if(Json1_fc.ismortgage == 100112){
+		_ismortgage = "是，" + Json1_fc.overPressure;
+	}
+	var _housingProperty = "";
+	switch(Json1_fc.housingProperty){
+		case 191201:
+			_housingProperty = "普通住宅";
+			break;
+		case 191202:
+			_housingProperty = "别墅";
+			break;
+		case 191203:
+			_housingProperty = "公寓";
+			break;
+		case 191204:
+			_housingProperty = "办公楼";
+			break;
+		case 191205:
+			_housingProperty = "酒店式公寓";
+			break;
+		case 191206:
+			_housingProperty = "商住两用";
+			break;
+		case 191207:
+			_housingProperty = "其他";
+			break;
+		default:
+			break;
+	}
+	_address = Json1_fc.provinceName + Json1_fc.cityName + Json1_fc.districtName + Json1_fc.address;
+	str = '<p><span>编号：<span id="house_Id'+_num+'">'+Json1_fc.houseNo+'</span></span>&nbsp;&nbsp;&nbsp;<span>产权人：<span id="house_Name'+_num+'">'+_propertyOwner+'</span></span></p>'
+			+'<p>所在地：<span id="house_address'+_num+'">'+_address+'</span></p>'
+			+'<p>是否抵押：<span id="house_pledge'+_num+'">'+_ismortgage+'</span></p>'
+			+'<p>购入时间：<span id="house_time'+_num+'">'+Json1_fc.buyDate+'</span></p>'
+			+'<p>登记价格：<span id="house_price'+_num+'">'+Json1_fc.regPrice+'万元</span></p>'
+			+'<p>房屋性质：<span id="housingProperty'+_num+'">'+_housingProperty+'</span></p>'
+			+'<p>建造年份：<span id="buildYear'+_num+'">'+Json1_fc.buildYear+'</span>年</p>'
+			+'<p>建筑面积：<span id="builtUpArea'+_num+'">'+Json1_fc.builtUpArea+'</span>㎡</p>'
+			+'<p>小区名称：<span id="cellName'+_num+'">'+Json1_fc.cellName+'</span></p>'
+			+'<p>估值价格：<span id="house_currentValuation'+_num+'">'+Json1_fc.currentValuation+'万元</span></p>'
+			+'<p>备注：<span id="house_remark'+_num+'">'+Json1_fc.remark+'</span></p>';
+	return str;
+}
+
+//房产文件类型
+function fcText(num){
+	switch(num){
+		case '119801':
+			return "房产证复印件";
+		case '119802':
+			return "水费单";
+		case '119803':
+			return "税单、地税发票";
+		case '119804':
+			return "月度银行账单";
+		case '119805':
+			return "月度信用卡账单";
+		case '119806':
+			return "电费单/水费单/燃气账单";
+		case '119807':
+			return "移动电话服务账单/网络服务账单/有线电视账单";
+		case '119808':
+			return "租赁合同/有邮戳的信函";
+		default :
+			return "";
+	}
+}
+
+//查看房产资料
+function houseRemarks(num_id,Json){
+	data = Json.result;
+	if(data == null){
+		return false;
+	}
+	$('#house_Id'+num_id).html(data.houseNo);				//编号
+	var _propertyOwner = "",
+		_ismortgage = "",
+		_address = "";
+	if(data.propertyOwner == 1){
+		_propertyOwner = "本人";
+	}else if(data.propertyOwner == 2){
+		_propertyOwner = "非本人";
+	}else if(data.propertyOwner == 3){
+		_propertyOwner = "本人和" + data.associates;
+	}
+	if(data.ismortgage == 100111){
+		_ismortgage = "否";
+	}else if(data.ismortgage == 100112){
+		_ismortgage = "是，" + data.overPressure;
+	}
+	
+	var _housingProperty = "";
+	switch(data.housingProperty){
+		case 191201:
+			_housingProperty = "普通住宅";
+			break;
+		case 191202:
+			_housingProperty = "别墅";
+			break;
+		case 191203:
+			_housingProperty = "公寓";
+			break;
+		case 191204:
+			_housingProperty = "办公楼";
+			break;
+		case 191205:
+			_housingProperty = "酒店式公寓";
+			break;
+		case 191206:
+			_housingProperty = "商住两用";
+			break;
+		case 191207:
+			_housingProperty = "其他";
+			break;
+		default:
+			break;
+	}
+	
+	_address = data.provinceName + data.cityName + data.districtName + data.address;
+	
+	$('#house_Name'+num_id).html(_propertyOwner);			//产权人
+	$('#house_pledge'+num_id).html(_ismortgage);			//是否抵押
+	$('#house_address'+num_id).html(_address);			//所在地
+	$('#house_time'+num_id).html(data.buyDate);			//购入时间
+	$('#housingProperty'+num_id).html(_housingProperty);			//房屋性质
+	$('#buildYear'+num_id).html(data.buildYear);			//建造年份
+	$('#builtUpArea'+num_id).html(data.builtUpArea);			//建筑面积
+	$('#cellName'+num_id).html(data.cellName);			//小区名称
+	$('#house_price'+num_id).html(data.regPrice+"万元");			//登记价格
+	$('#house_currentValuation'+num_id).html(data.currentValuation+"万元");			//目前估值
+	$('#house_remark'+num_id).html(data.remark);			//备注
+}
+var add_note_status1 = true;
+
+//添加账单和身份证备注成功后追加在表格后面方法
+function remarks_ajax(_user_id,_content,_auditor,_tag,_file_id,_obj){
+	var newData = DataTime('component'); 		//获取系统当前时间，（年月日）;
+	if(!add_note_status1){
+		alert("已经提交添加备注，请耐心等待返回！");
+		return;
+	}
+	add_note_status1 = false;
+	$.ajax({
+		type:"POST",
+		url:huijie_Url+"/add_note.do",
+		data:{'userId':_user_id, 'content':_content, 'auditor':_auditor, 'tag':_tag, 'document':_file_id},
+		async:false,
+		dataType:'json',
+		success:function(Json){
+			add_note_status1 = true;
+			if(Json.status == 'OK'){
+				if($('#'+_obj+'_dv').find('.remark-click-find').is(':hidden')){
+					$('#'+_obj+'_dv').find('.remark-click-find').show();
+				}
+				easyDialog.open({
+				  container : {
+				    header : '添加备注提示框',
+				    content : '保存成功'
+				  },
+				  width:300,
+				  autoClose:2000
+				});
+				$('.dialog-remarks').dialog_zr({switch_oc:'close'});
+			}else{
+				easyDialog.open({
+				  container : {
+				    header : '添加备注提示框',
+				    content : '保存失败'
+				  },
+				  autoClose:2000
+				});
+			}
+		}
+	});
+	return false;
+}
+
+//下载和显示备注
+function appendix(_file_id){
+	if(_file_id == null || _file_id == 0){
+		return "";
+	}
+	var arrFile = [];
+	var _appendix = "";
+	arrFile = _file_id.split(',');
+	for(var i = 0; i<arrFile.length; i++){
+		_appendix += "<a style='margin-right:10px;' href='"+huijie_Url1+"/download_file.do?id="+arrFile[i]+"'>附件"+(i+1)+"</a>";
+	}
+	return _appendix;
+}
+
+function WdateFocus(obj){
+	if($(obj).val() == 0 || $(obj).val() == ""){
+		return false;
+	}
+	var myDate = new Date();
+	if(myDate.getFullYear() >= $(obj).val()){
+		$('input[name="that"]').val(myDate.getFullYear()-$(obj).val());
+	}else{
+		alert("建房时间不能大于当前日期");
+	}
+}
+
+</script>

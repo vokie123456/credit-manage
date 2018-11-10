@@ -1,0 +1,173 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+	.page-td{}
+	.page-td a{text-decoration: none; margin:10px 5px;}
+</style>
+
+<form id="thjl_Frm">
+	<div class="seach-dv">
+		<input type="hidden" name="userId" id="user_id_thjl_Frm" />
+		<input type="hidden" name="pageIndex" id="pageIndex_thjl" />
+		<input type="hidden" id="pageTotal_thjl" />
+		<span>日期：</span>
+		<input id="inp_dxjl_st" type="text" class="buyDate runcode" name="start" />
+		——
+		<input id="inp_dxjl_en" type="text" class="buyDate runcode" name="end" />
+		<script>
+			$(function(){
+				J('#inp_dxjl_st').calendar({ maxDate:'#inp_dxjl_en' });
+				J('#inp_dxjl_en').calendar({ minDate:'#inp_dxjl_st' });
+			})
+		</script>
+		<a id="thjl_btn" href="javascript:;">查询</a>
+	</div>
+</form>
+<table id="thjl_table" class="def-table dxjl-table" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr>
+			<td>日期</td>
+			<td>联系人</td>
+			<td>联系号码</td>
+			<td>状态</td>
+			<td class="w33">通话时长</td>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5" class="page-td">
+				<a href="javascript:;" data-type="first">首页</a>
+				<a href="javascript:;" data-type="prev">上一页</a>
+				<a href="javascript:;" data-type="next">下一页</a>
+				<a href="javascript:;" data-type="last">末页</a>
+				
+				<font id="dangqianye_thjl"></font>  /  <font id="zongye_thjl"></font>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+<script>
+	$(function(){
+		/* CommonPerson.Base.LoadingPic.FullScreenShow(); */
+		ajaxThjl({userId:$("#user_id").val()});
+		$("#user_id_thjl_Frm").val($("#user_id").val());
+		$("#thjl_btn").click(function(){
+			$("#pageIndex_thjl").val("");
+			var data = $("#thjl_Frm").serialize();
+			ajaxThjl(data);
+		});
+		
+		$('.page-td a').click(function(){
+			_type = $(this).data("type");
+			var pageNow = 1;								//分页参数
+			var pageIndex = parseInt($("#pageIndex_thjl").val());			//当前页号
+			var pageTotal = parseInt($("#pageTotal_thjl").val());			//总页数
+			if(_type == "first"){
+				pageNow = 1;
+			}else if(_type == "prev"){
+				if(pageIndex > 1){
+					pageNow = pageIndex-1;
+				}else{
+					return false;
+				}
+			}else if(_type == "next"){
+				if(pageIndex < pageTotal){
+					pageNow = pageIndex+1;
+				}else{
+					return false;
+				}
+			}else if(_type == "last"){
+				pageNow = pageTotal;
+			}else{
+				alert("错误");
+			}
+			$("#pageIndex_thjl").val(pageNow);
+			var data = $("#thjl_Frm").serialize();
+			ajaxThjl(data);
+		});
+	})
+	function ajaxThjl(data){
+		$.ajax({
+			url:$j("body").attr("contextpath")+"/operating/userBasicInformation/byUserIdGetCallRecord.do",
+			type:'get',
+			data:data,
+			dataType:'json',
+			success:function(Json){
+				if(Json.appCallRecordList  == null || Json.appCallRecordList  == ""){
+					$("#thjl_table").find("tbody").html("");
+					return false;
+				}
+				
+				var status = "",
+					str = "";
+				$("#pageIndex_thjl").val(Json.pageIndex);
+				$("#pageTotal_thjl").val(Json.pageTotal);
+				for(var i = 0; i<Json.appCallRecordList.length; i++){
+					switch(Json.appCallRecordList[i].stat){
+						case 0:
+							status="已接听";
+							break;
+						case 1:
+							status="呼出";
+							break;
+						case 2:
+							status="呼入";
+							break;
+						case 3:
+							status="已拒绝";
+							break;
+						default :
+							status="未接通的来电";
+							break;
+					}
+					var shichang;
+					if(Json.appCallRecordList[i].during == -1){
+						shichang = 0;
+					}else{
+						shichang = Json.appCallRecordList[i].during;
+					}
+					str += "<tr>"
+								+"<td>"+dateFormat(Json.appCallRecordList[i].callTime,"hour")+"</td>"
+								+"<td>"+Json.appCallRecordList[i].contact+"</td>"
+								+"<td>"+Json.appCallRecordList[i].contactNo+"</td>"
+								+"<td>"+status+"</td>"
+								+"<td>"+shichang+"</td>"
+							+"</tr>";
+				}
+				$("#dangqianye_thjl").html(Json.pageIndex);
+				$("#zongye_thjl").html(Json.pageTotal);
+				$("#thjl_table").find("tbody").html(str);
+				/* CommonPerson.Base.LoadingPic.FullScreenHide(); */
+			}
+		});
+	}
+	//时间戳转成date（time_str为时间戳、type：day只显示年月日，hour显示年月日时分秒）
+	function dateFormat(time_str,type){
+		var date = new Date(time_str),
+			h,m,s;
+		Y = date.getFullYear() + '-';
+		M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+		D = date.getDate() + ' ';
+		if(date.getHours() < 10){
+			h = "0"+date.getHours() + ':';
+		}else{
+			h = date.getHours() + ':';
+		}
+		if(date.getMinutes() < 10){
+			m = "0"+date.getMinutes() + ':';
+		}else{
+			m = date.getMinutes() + ':';
+		}
+		if(date.getSeconds() < 10){
+			s = "0"+date.getSeconds();
+		}else{
+			s = date.getSeconds();
+		}
+		if(type == "hour"){
+			return Y+M+D+h+m+s;
+		}else if(type == "day"){
+			return Y+M+D;
+		}
+	}
+</script>

@@ -1,0 +1,187 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<style>
+			.contractInfo .mark-center thead tr td{font-size:15px;font-weight:bold;text-align:center;}
+			.contractInfo .loanInfo{border:1px solid #333;margin:10px 5px;}
+			.contractInfo a{color:#009dd5;}
+		</style>
+			<div class="contractInfo">
+				<div class="tit-detail-left">
+				 放款信息
+			    </div>
+			    <div class="loanInfo">
+			    <table class="tabcustomPeo mark mark-center" cellpadding="0" cellspacing="0" style="width:80%;">
+			    	<thead>
+			    		<tr>
+			    			<td>合同编号</td>
+			    			<td>借款人姓名</td>
+			    			<td>身份证</td>
+			    			<td>合同金额</td>
+			    			<td>服务费</td>
+			    			<td>到手金额</td>
+			    			<td>放款日期</td>
+							<td>合同状态</td>
+			    			<td>操作</td>
+			    		</tr>
+			    	</thead>
+			    	<tbody class="lendInfo">
+
+			    	</tbody>
+
+				</table>
+					<table class="table-text-left tabcustomPeo left-user-table mark mark-center cellchange" cellpadding="0" cellspacing="0" style="width:50%;display:none;" >
+						<thead>
+						<tr>
+							<td>当前期数</td>
+							<td>应还本金</td>
+							<td>利息</td>
+							<td>应还日期</td>
+						</tr>
+						</thead>
+						<tbody class="lendPlan">
+
+						</tbody>
+					</table>
+
+    			</div>
+			</div>
+
+</form>
+<script>
+$j(function(){
+	var url = $j("body").attr("contextpath")+"/base/api/transmit.do?_system_type=pic&_url=";
+    var clientId = $j('#client_id').val();
+    $j.ajax({
+        url:$j("body").attr("contextpath")+'/client/anJian/anjianContractInfo.do',
+        type:'POST',
+        data:{clientId:clientId},
+        dataType:'json',
+        success:function(Json){
+            console.log(Json);
+
+           var data = Json.lendApplyVoList;
+           var str = '';
+           for(var i = 0;i<data.length;i++) {
+               var lendApplyId = data[i].lend_apply_id;
+               var contractId = data[i].contract_id;
+               var loan_code = "";
+               if (data[i].loan_code != null) {
+                   loan_code = data[i].loan_code;
+               }
+               str += '<tr><td>' + loan_code + '</td>'
+                   + '<td>' + data[i].client_name + '</td>'
+                   + '<td>' + data[i].card_no + '</td>'
+                   + '<td>' + data[i].lend_money + '</td>'
+                   + '<td>' + data[i].lend_fee + '</td>'
+                   + '<td>' + data[i].arrive_money + '</td>'
+                   + '<td>' + dateFormat(data[i].lend_date, "hour") + '</td>'
+                   + '<td>' + data[i].lendStatus + '</td>'
+                   + '<td><a href="javascript:;" class="lend_plan" onclick="lendPlan(this)">放款计划表<input value="' + data[i].lend_apply_id + '" type="hidden" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                   + '<a class="ssId" href="javascript:void(0)" onclick="openFile(\'' + url + data[i].contract_url + '\')">借款合同</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+//				   +'<a class="ssId" href="javascript:void(0)" onclick="openFile(\''+url+data[i].bindContractUrl+'\')" >扣款协议</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                   + '<a class="jqzm" href="javascript:void(0)" onclick="loadjqzm(this,\'' + data[i].lendStatus + '\',\''+contractId+'\',\''+lendApplyId+'\')">结清证明</a>'
+                   + '</td>'
+               '</tr>'
+               console.log(Json);
+           }
+		        $j('.lendInfo').html(str);
+             }
+           })
+        })
+
+
+function lendPlan(obj){
+    console.log(obj)
+        var lendApplyId = $j(obj).find('input').val();
+    console.log(lendApplyId);
+    $j('.contractInfo .cellchange').toggle();
+        $j.ajax({
+            url: $j("body").attr("contextpath") + '/client/anJian/anjianRepayPlan.do',
+            type: 'POST',
+            data: {lendApplyId: lendApplyId},
+            dataType: 'json',
+            success: function (Json) {
+                var data = Json.billRecordVoList;
+                var str = '';
+                for(var i = 0;i<data.length;i++){
+                    str += '<tr><td>'+(i+1)+'</td>'
+                        +'<td>'+data[i].principal+'</td>'
+                        +'<td>'+data[i].interest+'</td>'
+                        +'<td>'+data[i].finalRepaymentDate+'</td>'
+                    '</tr>'
+                }
+                $j('.lendPlan').html(str);
+            }
+        })
+    }
+
+//   时间戳转成date（time_str为时间戳、type：day只显示年月日，hour显示年月日时分秒）
+function dateFormat(time_str,type){
+    var date = new Date(time_str),
+        h,m,s;
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    D = date.getDate() + ' ';
+    if(date.getHours() < 10){
+        h = "0"+date.getHours() + ':';
+    }else{
+        h = date.getHours() + ':';
+    }
+    if(date.getMinutes() < 10){
+        m = "0"+date.getMinutes() + ':';
+    }else{
+        m = date.getMinutes() + ':';
+    }
+    if(date.getSeconds() < 10){
+        s = "0"+date.getSeconds();
+    }else{
+        s = date.getSeconds();
+    }
+    if(type == "hour"){
+        return Y+M+D+h+m+s;
+    }else if(type == "day"){
+        return Y+M+D;
+    }
+}
+
+
+/**
+ * 打开一个下载文件
+ *
+ * @param url
+ */
+function openFile(url){
+    if( url == $j("body").attr("contextpath")+"/base/api/transmit.do?_system_type=pic&_url=null"){
+        alert("文件正在生成中,请稍候再试");
+        return;
+    }
+    window.open(url);
+}
+/**
+ * 打开一个下载文件
+ *
+ * @param url
+ */
+function loadjqzm(obj,lendStatus,contractId,lendApplyId){
+    if(lendStatus != '已结清'){
+        alert('该合同尚未结清');
+        $j(obj).css('color','#ccc');
+        return;
+    }
+    var settleContractUrl ="";
+    contractId = eval(contractId);
+    $j.ajax({
+        url: $j("body").attr("contextpath") + '/client/anJian/createContract.do',
+        type: 'post',
+        data: {lendApplyId:lendApplyId,contractId: contractId},
+        dataType: 'json',
+        success: function (Res) {
+            if(Res.status == 'fail'){
+                alert(Res.contant);
+                return;
+			}
+           settleContractUrl = Res.lendApplyContract.settleContractUrl;
+            window.open($j("body").attr("contextpath")+"/base/api/transmit.do?_system_type=pic&_url=" + settleContractUrl);
+        }
+    })
+}
+</script>

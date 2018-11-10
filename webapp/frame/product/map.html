@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='gb2312'>
+<title>百度数据地图</title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+<link rel='stylesheet' href='http://chris2go.github.io/mapv/examples/style.css' />
+<style type='text/css'>
+html,body,#div123 {
+width: 100%;
+height: 100%;
+}
+.SvgOverlay {
+position: relative;
+width: 100%;
+height: 100%;
+stroke:'yellow';
+opacity:.3
+}
+.SvgOverlay svg {
+position: absolute;
+width: 18000px;
+height: 18000px;        
+}
+</style>
+<script type='text/javascript' src='http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js'></script>
+<script type='text/javascript' src='http://api.map.baidu.com/api?v=2.0&ak=41f5ba8b05bb50eabb8e45a7a59cfc20'></script>
+</head>
+<body>
+<div id='map'></div>
+<div id='nightMode' style='background-image: url(http://pic.yupoo.com/weiyqchris2012_v/F316jPF3/P122I.png) ;display:none;position:absolute;font-size:12px;top:20px;margin-left:10px;width:70px;height:70px;cursor:pointer;-webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;font-family:'微软雅黑';'></div> 
+<div id='myPanel' style='position:absolute;top:60px;right:0px;padding:10px font-family:'微软雅黑';'>
+<div id='content' style='opacity:.8;'>
+<ul id='expmenu-freebie'>
+<li>
+<ul class='expmenu'>
+<li><div class='header'>
+<span class='label' style='background-image: url(http://pic.yupoo.com/weiyqchris2012/EfskY9jx/medish.jpg)'>专题图层</span>
+<span class='arrow down'></span>
+</div>
+<ul class='menu' style='display:none;'>
+<li >1.POINT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' id='isPointChecked' checked='true' onchange='PointCheck()'/></li>
+<div id='pointType' >
+<select id='pointlist' onchange='changeMapvStyle(this.value)' style='width:113px;background:#fff;border:0px;'><option value='point_category'>category</option><option value='point_heatmap'>heatmap</option><option value='point_density'>density</option><option value = 'point_intensity'>intensity</option><option value='point_choropleth'>choropleth</option><option value='point_simple'>simple</option><option value='point_bubble'>bubble</option></select>
+</div>
+<li >2.CELL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' id='isCellChecked' checked=' true' onchange='CellCheck()'</li>
+<div id='cellType' >
+<select id='celllist' onchange='changeMapvStyle(this.value)' style='width:110px;background:#fff;border:0px;'><option value='cell_choropleth'>choropleth</option><option value='cell_intensity'>intensity</option></select>
+</div>
+<li >3.VORONOI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' id='isVoronoiChecked' checked='true' onchange='VoronoiCheck()'</li>
+<div id='voronoiType' >
+<input id='myslide' class='myrange' type='range' min='0' max='100' step='1' value='80' onchange='updateSlide()' />
+</div>
+</ul></li>
+<li>
+<div class='header'>
+<span class='label' style='background-image: url(http://pic.yupoo.com/weiyqchris2012_v/F4IrchI8/VZK0V.png)'>地图样式</span>
+<span class='arrow down' ></span>
+</div>
+<ul class='menu' style='display:none;'>
+<li ><div id='myPanel' >
+<select id='stylelist' onchange='changeMapStyle(this.value)' style='width:107px;background:#fff;border:0px;'><option value='mydefault1'>默认风格</option><option value='normal'>普通地图</option><option value='normal1'>普通地图无字</option><option value='dark'>黑色风格</option><option value = 'dark1'>黑色风格无字</option><option value='bluish'>蓝绿风格</option><option value='bluish1'>蓝绿风格无字</option><option value='grayscale'>灰色风格</option><option value='grayscale1'>灰色风格无字</option><option value='hardedge'>边框风格</option><option value='hardedge1'>边框风格无字</option></select>
+<input style = 'width:107px;height:20px;border:0px;' id='colorMap1' type='color' value='#000000' onchange='updateMap1()'/>
+</div></li>
+</ul></li>
+<li>
+<div class='header'>
+<span class='label' style='background-image: url(http://pic.yupoo.com/weiyqchris2012/EjItLBgf/medish.jpg);'>底图控制</span>
+<span class='arrow down'></span>
+</div>
+<ul class='menu' style='display:none;'>
+<li>
+<input id='myslide' class='myrange' type='range' min='0' max='100' step='1' value='0' onchange='updateMap()' style='width:55px;'/>
+<input style = 'width:107px;height:20px;border:0px;' id='colorMap' type='color' value='#000000' onchange='updateMap()'/>
+</ul></li><li><div class='header'>
+<span class='label' style='background-image: url(http://pic.yupoo.com/weiyqchris2012/EevsJAdo/medish.jpg);'>当前坐标</span>
+<span class='arrow down'></span>
+</div>
+<ul class='menu' style='display:none;'>
+<div id='mycord' style='background:#fff;'>&nbsp;点击获取百度坐标！</div>
+</ul></li>
+<li>
+<div class='header'>
+<span class='label' style='background-image: url(http://pic.yupoo.com/weiyqchris2012_v/F4Irb1HL/mlPp9.png);'>帮助信息</span>
+<span class='arrow down'></span>
+</div>
+<ul class='menu' style='display:none;'>
+<!--<li onclick= "window.open('http://www.mscbsc.com/bbs/thread-398920-1-1.html');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、相关帖子</li>-->
+<!--<li onclick="alert('邮箱：weiyq_chris@126.com\nQQ：1685188729')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、联系方式</li>-->
+
+</ul></li></ul></li></ul>
+</div>
+<script type='text/javascript' src='http://chris2go.github.io/mapv/dist/Mapv.js'></script>
+<script type='text/javascript' src='http://chris2go.github.io/mapv/examples/example.js'></script>
+<script type='text/javascript' src='http://d3js.org/d3.v3.min.js'></script>
+<script type='text/javascript' src='datapoint.js'></script>
+<script type='text/javascript' src='datacell.js'></script>
+<script type='text/javascript' src='datapoint.js'></script>
+<script type='text/javascript'>
+bmap.centerAndZoom(new BMap.Point(115.29888,37.0073), 12);
+changeMapStyle('mydefault1')
+var mapv = new Mapv({
+map: bmap  // map实例化
+});
+function updateSlide(){
+ x = document.getElementById('myslide').value/100;
+   $('.SvgOverlay svg').css('opacity',x);
+}
+var ifopcity=1
+$('.BMap_mask').css('background-color','#000000');
+document.getElementById('nightMode').onclick = function (){
+if (ifopcity==0){
+$('.BMap_mask').css('opacity','0');
+ifopcity=1;
+document.getElementById('nightMode').style.backgroundImage = 'url(http://pic.yupoo.com/weiyqchris2012_v/F316jPF3/P122I.png)';}
+else{$('.BMap_mask').css('opacity','0.9');
+ifopcity=0;
+document.getElementById('nightMode').style.backgroundImage = 'url(http://pic.yupoo.com/weiyqchris2012_v/F31467Wu/143vaG.png)';}}
+function changeMapvStyle(mm){
+if (mm.split('_')[0] == 'point'){
+    if(mm.split('_')[1] == 'category'){    
+layerpoint.setDrawType(mm.split('_')[1]);
+layerpoint.setDrawOptions({
+size: 2, shadowColor: 'rgba(0,0,0,.6)',globalCompositeOperation: 'destination-over',shadowBlur: 10,shadowOffsetX: 1,shadowOffsetY: 1,splitList: {'0':'rgba(0,255,0,.8)','1':'rgba(84,130,53,.8)','2':'rgba(0,0,255,.8)','3':'rgba(255,255,0,.8)','4':'rgba(255,0,0,.8)',}  
+});
+}
+    if(mm.split('_')[1] == 'webgl'){    
+layerpoint.setDrawType(mm.split('_')[1]);
+layerpoint.setDrawOptions({
+size: 2,
+fillStyle: 'rgba(0,255,0,.2)',
+});   
+
+}
+    if(mm.split('_')[1] == 'heatmap'){    
+layerpoint.setDrawType(mm.split('_')[1]);
+layerpoint.setDrawOptions({
+type: 'circle',shadowBlur: 25,mapOpacity: .8,max: 30, size: 300, unit: 'm',gradient: {'0':'rgb(0,255,0)','.2':'rgb(84,130,53)','.4':'rgb(0,0,255)','.6':'rgb(255,255,0)','.8':'rgb(255,0,0)',},
+});
+}
+    if(mm.split('_')[1] == 'density'){    
+layerpoint.setDrawType(mm.split('_')[1]);
+layerpoint.setDrawOptions({
+type: 'rect',globalAlpha:.9,unit:'px',size:15,shadowColor: 'rgba(255,0,0,.6)',globalCompositeOperation: 'destination-over',    shadowBlur: 20,     shadowOffsetX: 1,shadowOffsetY: 1,gradient: {'0':'rgb(0,255,0)','.2':'rgb(84,130,53)','.5':'rgb(0,0,255)','.8':'rgb(255,255,0)','1':'rgb(255,0,0)',},label: {       show: false }
+});
+}
+    if(mm.split('_')[1] == 'intensity'){    
+layerpoint.setDrawType(mm.split('_')[1]);
+layerpoint.setDrawOptions({
+size:2,
+shadowColor: 'rgba(0,0,255,.8)',globalCompositeOperation: 'destination-over',    shadowBlur: 10,     shadowOffsetX: 1,shadowOffsetY: 1,globalAlpha:.8,max: 10,gradient: {'0':'rgb(0,255,0)','.2':'rgb(84,130,53)','.5':'rgb(0,0,255)','.8':'rgb(255,255,0)','1':'rgb(255,0,0)',},
+});
+}
+  if(mm.split('_')[1] == 'choropleth'){    
+layerpoint.setDrawType(mm.split('_')[1]);
+layerpoint.setDrawOptions({
+size:2,
+shadowColor: 'rgba(0,255,0,.8)',globalCompositeOperation: 'destination-over',    shadowBlur: 32,     shadowOffsetX: 1,shadowOffsetY: 1,globalAlpha:.8,splitList: [{start:0,end:3,color: 'rgb(0,255,0)'},{start:3,end:5,color: 'rgb(84,130,53)'},{start:5,end:8,color: 'rgb(0,0,255)'},{start:8,end:11,color: 'rgb(255,255,0)'},{start:11,color: 'rgb(255,0,0)'}]
+});
+}
+    if(mm.split('_')[1] == 'simple'){    
+layerpoint.setDrawType(mm.split('_')[1]);
+layerpoint.setDrawOptions({
+size:1,fillStyle: 'rgba(0,0,255,.8)',strokeStyle: 'rgba(0,255,0,0)',lineWidth:0,shadowColor: 'rgba(0,0,0,.3)',shadowBlur:10,shadowOffsetX: 1,shadowOffsetY: 1,globalCompositeOperation: 'destination-over',});
+}
+    if(mm.split('_')[1] == 'bubble'){    
+layerpoint.setDrawType(mm.split('_')[1]);
+layerpoint.setDrawOptions({
+shadowColor: 'rgba(0,255,0,.3)',globalCompositeOperation: 'destination-over',    shadowBlur: 10,     shadowOffsetX: 1,shadowOffsetY: 1,fillStyle: 'rgba(255,255,0,.8)',strokeStyle: 'rgb(0,0,255)',lineWidth:1,splitList: [ {start:0,end:3,size: 1},{start:3,end:5,size: 2},{start:5,end:8,size: 3},{start:8,end:11,size: 4},{start:11,size: 5},]});
+}
+    if(mm.split('_')[1] == 'cluster'){    
+layerpoint.setDrawType(mm.split('_')[1]);
+layerpoint.setDrawOptions({
+size: 2,shadowColor: 'rgba(0,255,0,.3)',globalCompositeOperation: 'destination-over',    shadowBlur: 10,     shadowOffsetX: 1,shadowOffsetY: 1,lineWidth:1,fillStyle: 'rgba(255,0,0,.8)',strokeStyle: 'rgb(255,255,0)',            label: {    show: true,},
+});}
+layerpoint.setMapv(mapv);
+}
+if (mm.split('_')[0] == 'cell'){
+    if(mm.split('_')[1] == 'choropleth'){    
+layercell.setDrawType(mm.split('_')[1]);
+layercell.setDrawOptions({
+shadowColor: 'rgba(0,255,0,.3)',
+globalCompositeOperation: 'destination-over', // 颜色叠加方式
+    shadowBlur: 10,  // 投影模糊级数
+     shadowOffsetX: 1,
+shadowOffsetY: 1,
+globalAlpha:.8,
+ lineWidth: 1,
+splitList: [     // 按数值区间来展示不同颜色的点
+{start:0,
+end:1,
+color: 'rgb(0,255,0)'},
+{start:1,
+end:3,
+color: 'rgb(84,130,53)'},
+{start:3,
+end:4,
+color: 'rgb(0,0,255)'},
+{start:4,
+end:7,
+color: 'rgb(255,255,0)'},
+{start:7,
+color: 'rgba(255,0,0,.8)'}
+],
+    label: { // 是否显示count值
+       show: true, // 是否显示，默认不显示
+minZoom:17,
+font:'14px',
+fillStyle: 'rgba(255,0,255,.8)',
+}
+});
+}
+    if(mm.split('_')[1] == 'intensity'){    
+layercell.setDrawType(mm.split('_')[1]);
+layercell.setDrawOptions({
+ show: true, // 是否显示
+max: 10, // 设置最大的权重值
+lineWidth:0,
+globalAlpha:.8,
+shadowColor: 'rgba(102,255,102,.3)',
+globalCompositeOperation: 'destination-over', // 颜色叠加方式
+    shadowBlur: 15,  // 投影模糊级数
+     shadowOffsetX: 1,
+shadowOffsetY: 1,
+ label: { // 显示label文字
+font: '9px', // 设置字号
+minZoom: 17, // 最小显示的级别
+fillStyle: 'rgb(255,0,0)'},
+strokeStyle: 'rgba(237,237,237,0)',
+gradient: { // 渐变颜色值设置
+'0':'rgb(0,255,0)',
+'.2':'rgb(84,130,53)',
+'.4':'rgb(0,0,255)',
+'.9':'rgb(255,255,0)',
+'1':'rgb(255,0,0)',
+},
+});
+layercell.setMapv(mapv);}
+}}
+var myMapType = new BMap.MapTypeControl();
+myMapType.setOffset(new BMap.Size(10,30)); 
+bmap.addControl(myMapType); 
+bmap.addEventListener('click', function(e){document.getElementById('mycord').innerHTML = (e.point.lng).toFixed(5) + ',' + (e.point.lat).toFixed(5) ;});
+var updateMap1 = function(){
+var mystyle = [
+         {        'featureType': 'all',
+                  'elementType': 'all',
+                 'stylers': {'hue': document.getElementById('colorMap1').value, 'saturation': 52 }
+      }]; bmap.setMapStyle({styleJson:mystyle});}
+var updateMap = function(){
+$('.BMap_mask').css('opacity',document.getElementById('myslide').value/100);
+$('.BMap_mask').css('background-color',document.getElementById('colorMap').value);}
+obj = document.getElementById('celllist');
+for(i=0;i<obj.length;i++){
+if(obj[i].value.split('_')[1]=='intensity')
+{obj[i].selected = true;}
+}
+var layercell = new Mapv.Layer({
+mapv: mapv, // 对应的mapv实例
+zIndex: 5, // 图层层级
+dataType: 'polygon', // 数据类型，点类型
+dataRangeControl: true,
+data: datacell, // 数据
+drawType: 'intensity', // 展示形式
+drawOptions: { // 绘制参数
+max: 10, // 设置最大的权重值
+lineWidth:0,
+globalAlpha:.8,
+shadowColor: 'rgba(102,255,102,.3)',
+globalCompositeOperation: 'destination-over', // 颜色叠加方式
+    shadowBlur: 15,  // 投影模糊级数
+     shadowOffsetX: 1,
+shadowOffsetY: 1,
+ label: { // 显示label文字
+ show: true, // 是否显示
+font: '9px', // 设置字号
+minZoom: 17, // 最小显示的级别
+fillStyle: 'rgb(255,0,0)'},
+strokeStyle: 'rgba(237,237,237,0)',
+gradient: { // 渐变颜色值设置
+'0':'rgb(0,255,0)',
+'.2':'rgb(84,130,53)',
+'.4':'rgb(0,0,255)',
+'.9':'rgb(255,255,0)',
+'1':'rgb(255,0,0)',
+},
+}
+});
+layercell.setMapv(mapv);
+for (i=0;i<datacell.length;i++){
+cjson = datacell[i];
+for(j=0;j<5;j++){
+  clng = cjson.geo[j][0]
+  clat = cjson.geo[j][1]
+var cnameCell = new BMap.Point(clng,clat);
+var chotSpot = new BMap.Hotspot(cnameCell, {text: cjson.name});
+bmap.addHotspot(chotSpot);}}
+obj = document.getElementById('pointlist');
+for(i=0;i<obj.length;i++){
+if(obj[i].value.split('_')[1]=='heatmap')
+{obj[i].selected = true;}
+}
+for (i=0;i<datapoint.length;i++){
+mjson=datapoint[i];
+var mnamePoint = new BMap.Point(mjson.lng,mjson.lat); 
+var mhotSpot = new BMap.Hotspot(mnamePoint, {text: mjson.name}); 
+bmap.addHotspot(mhotSpot);} 
+var layerpoint = new Mapv.Layer({
+mapv: mapv, // 对应的mapv实例
+zIndex: 6, // 图层层级
+dataType: 'point', // 数据类型，点类型
+dataRangeControl: true,
+data: datapoint, // 数据
+drawType: 'heatmap', // 展示形式
+drawOptions: { // 绘制参数
+
+}
+});
+changeMapvStyle('point_heatmap');
+var getRandomColor = function(){return '#'+(Math.random()*0xffffff<<0).toString(16);}
+var myzhuanti =  new Array(); 
+var myzhuantiColor =  new Array();
+myzhuanti[0] = 2;
+myzhuantiColor[0] =  'rgb(0,0,128)';
+myzhuanti[1] = 5;
+myzhuantiColor[1] =  'rgb(255,0,255)';
+myzhuanti[2] = 0;
+myzhuantiColor[2] =  'rgb(204,255,255)';
+myzhuanti[3] = 10;
+myzhuantiColor[3] =  'rgb(153,51,102)';
+myzhuanti[4] = 9;
+myzhuantiColor[4] =  'rgb(0,0,0)';
+myzhuanti[5] = 7;
+myzhuantiColor[5] =  'rgb(128,128,128)';
+myzhuanti[6] = 4;
+myzhuantiColor[6] =  'rgb(153,51,0)';
+myzhuanti[7] = 8;
+myzhuantiColor[7] =  'rgb(153,204,255)';
+myzhuanti[8] = 6;
+myzhuantiColor[8] =  'rgb(128,0,0)';
+myzhuanti[9] = 1;
+myzhuantiColor[9] =  'rgb(255,102,0)';
+myzhuanti[10] = 3;
+myzhuantiColor[10] =  'rgb(153,51,102)';
+function customOverlay() {}
+customOverlay.prototype = new BMap.Overlay();
+customOverlay.prototype.initialize = function(){
+var layer = d3.select(bmap.getPanes().mapPane).append('div123').attr('class','SvgOverlay');
+var svg = layer.append('svg');
+var svgoverlay = svg.append('g');  
+customOverlay.prototype.draw = function(){
+var c2p = function (lng1,lat1) {
+var bdCoordinates = new BMap.Point(lng1,lat1);
+var pCoordinates = bmap.pointToOverlayPixel(bdCoordinates);
+return [pCoordinates.x + Math.random()/1000,pCoordinates.y + Math.random()/1000];
+}
+var pointdata = datapoint;
+var positions = [] ;
+pointdata.forEach(function(d){
+positions.push(c2p(d.lng,d.lat)); 
+});
+var color = d3.scale.category20();
+var polygons = d3.geom.voronoi(positions);
+console.log(d3.geom.voronoi(positions));
+var pathAttr ={
+d:function(d,i) { return 'M' + polygons[i].join('L') + 'Z'},
+stroke:'rgb(0,0,255)',
+'stroke-width':1,
+'stroke-opacity':1,
+fill:'none',
+};
+ svgoverlay.selectAll('path')
+.data(polygons)
+.style('fill',function(d,i) {
+var mytheme = pointdata[i].count
+if (mytheme == myzhuanti[0])
+{return  myzhuantiColor[0] ;}
+if (mytheme == myzhuanti[1])
+{return  myzhuantiColor[1] ;}
+if (mytheme == myzhuanti[2])
+{return  myzhuantiColor[2] ;}
+if (mytheme == myzhuanti[3])
+{return  myzhuantiColor[3] ;}
+if (mytheme == myzhuanti[4])
+{return  myzhuantiColor[4] ;}
+if (mytheme == myzhuanti[5])
+{return  myzhuantiColor[5] ;}
+if (mytheme == myzhuanti[6])
+{return  myzhuantiColor[6] ;}
+if (mytheme == myzhuanti[7])
+{return  myzhuantiColor[7] ;}
+if (mytheme == myzhuanti[8])
+{return  myzhuantiColor[8] ;}
+if (mytheme == myzhuanti[9])
+{return  myzhuantiColor[9] ;}
+if (mytheme == myzhuanti[10])
+{return  myzhuantiColor[10] ;}
+if (mytheme == myzhuanti[11])
+{return  myzhuantiColor[11] ;}
+})
+.attr(pathAttr)
+.enter()
+.append('svg:path')
+.attr('class','cell')
+.attr(pathAttr)
+}  
+}  
+var myCompOverlay = new customOverlay();
+bmap.addOverlay(myCompOverlay);
+setTimeout(function(){
+bmap.panTo(new BMap.Point(115.29888,37.0073));
+$('.SvgOverlay svg').css('fill-opacity',.3);
+},100)
+</script>
+</body>
+</html>
+

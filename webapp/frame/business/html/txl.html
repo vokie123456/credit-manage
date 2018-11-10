@@ -1,0 +1,132 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+	.page-td{}
+	.page-td a{text-decoration: none; margin:10px 5px;}
+</style>
+<form id="txl_Frm">
+	<div class="seach-dv">
+		<input type="hidden" name="userId" id="user_id_txl_Frm" />
+		<input type="hidden" name="pageIndex" id="pageIndex_txl" />
+		<input type="hidden" id="pageTotal_txl" />
+			
+			
+		联系人:<input type="text"  name="contacts"/>
+		号码1:<input type="text"  name="oneNumber"/>
+		号码2:<input type="text"  name="twoNumber"/>
+		
+		<a id="txl_btn" href="javascript:;" style="float: right;">查询</a>
+	</div>
+</form>
+
+
+<table id="txl_table" class="def-table txl-table" cellpadding="0" cellspacing="0" style="width: 99%;">
+	
+	<thead>
+		<tr>
+			<td class="w33">联系人</td>
+			<td class="w33">号码1</td>
+			<td class="w33">号码2</td>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<tr>
+			<td>爸爸</td>
+			<td>13821348978</td>
+			<td>021-87669877</td>
+		</tr>
+		<tr>
+			<td>杨老师</td>
+			<td>13821348978</td>
+			<td></td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5" class="page-td">
+				<a href="javascript:;" data-type="first">首页</a>
+				<a href="javascript:;" data-type="prev">上一页</a>
+				<a href="javascript:;" data-type="next">下一页</a>
+				<a href="javascript:;" data-type="last">末页</a>
+				<font id="dangqianye_txl"></font>  /  <font id="zongye_txl"></font>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+<script>
+	$(function(){
+		/* CommonPerson.Base.LoadingPic.FullScreenShow(); */
+		$("#user_id_txl_Frm").val($("#user_id").val());
+		ajaxTxl({userId:$("#user_id_txl_Frm").val()});
+		$("#txl_btn").click(function(){
+			$("#pageIndex_txl").val("");
+			var data = $("#txl_Frm").serialize();
+			ajaxTxl(data);
+		});
+		
+		
+		$('.page-td a').click(function(){
+			_type = $(this).data("type");
+			var pageNow = 1;								//分页参数
+			var pageIndex = parseInt($("#pageIndex_txl").val());			//当前页号
+			var pageTotal = parseInt($("#pageTotal_txl").val());			//总页数
+			if(_type == "first"){
+				pageNow = 1;
+			}else if(_type == "prev"){
+				if(pageIndex > 1){
+					pageNow = pageIndex-1;
+				}else{
+					return false;
+				}
+			}else if(_type == "next"){
+				if(pageIndex < pageTotal){
+					pageNow = pageIndex+1;
+				}else{
+					return false;
+				}
+			}else if(_type == "last"){
+				pageNow = pageTotal;
+			}else{
+				alert("错误");
+			}
+			$("#pageIndex_txl").val(pageNow);
+			var data = $("#txl_Frm").serialize();
+			ajaxTxl(data);
+			
+		});
+		
+	})
+	
+	function ajaxTxl(result){
+		
+		$.ajax({
+			url:$j("body").attr("contextpath")+"/operating/userBasicInformation/byUserIdGetMailList.do",
+			data:result,
+			type:"post",
+			dataType:"json",
+			success:function(data){
+				if(data.appContactsList  == null || data.appContactsList  == ""){
+					$("#txl_table").find("tbody").html("");
+					return false;
+				}
+				
+				$("#pageIndex_txl").val(data.pageIndex);
+				$("#pageTotal_txl").val(data.pageTotal);
+				
+				var str = "";
+				for(var i = 0; i<data.appContactsList.length; i++){
+					str += "<tr>"
+								+"<td>"
+									+data.appContactsList[i].contactName
+								+"</td>"
+								+"<td>"+data.appContactsList[i].contactPhone+"</td>"
+								+"<td>"+data.appContactsList[i].contactTel+"</td>"
+							+"</tr>";
+				}
+				$("#dangqianye_txl").html(data.pageIndex);
+				$("#zongye_txl").html(data.pageTotal);
+				$("#txl_table").find("tbody").html(str);
+			}
+		})
+	}
+</script>

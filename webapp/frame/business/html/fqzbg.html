@@ -1,0 +1,154 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<div class="yh-news-dv sjthbgDv">
+	<div class="single-table-dv">
+		<p class="yh-tit-bor" style="margin-top: 10px;">
+			<span>名单对比</span>
+		</p>
+		<div id="mddbTable">
+			
+		</div>
+		<p class="yh-tit-bor" style="margin-top: 10px;">
+			<span>登录事件策略集</span>
+		</p>
+		<div id="LoginTable">
+			
+		</div>
+	</div>
+</div>
+<style>
+	.w60{width: 55px;}
+	.sjthbgDv{font-size: 12px;}
+	.fruit{padding: 10px;}
+	.sjthbgTable thead td{background-color: #f7f7f7;}
+	.th-deatil{}
+	.th-search{margin-bottom: 10px;}
+	.th-search input{width: 90px; margin-right: 16px;}
+	.th-search .th-submit{border: 1px solid #ccc; cursor: pointer; padding: 0 15px;}
+	.upContacts{padding: 10px; width: 410px;}
+	.upContacts table{text-align: left;}
+	.upContacts table td{line-height: 30px;}
+	.upContacts .sele{min-width: 100px;}
+	.upContacts .pad30{padding-left: 30px;}
+	.yh-tit-bor{font-size: 12px;}
+	.upContacts .textCon{width: 330px; height: 100px; resize:none; margin-top: 10px;}
+</style>
+
+<script>
+	$(function(){
+		$.ajax({
+			url:$j("body").attr("contextpath")+'/credit/bqsStrategy/byClientIdQuery.do',
+			type:'GET',
+			data:{'clientId':$('#client_id').val()},			//$('#client_id').val()
+			dataType:'json',
+			success:function(data){
+				var Jsonlogin,JsonblackList;
+				
+
+				console.log(data.loginList);
+				console.log(data.blackList);
+			
+				if(data.loginList != null && data.loginList != ''){
+					Jsonlogin = $.parseJSON(data.loginList);
+				}
+				
+				if(data.blackList != null && data.blackList != ''){
+					JsonblackList = $.parseJSON(data.blackList);
+				}
+
+				if(JsonblackList != null){
+					$('#mddbTable').html(strList(JsonblackList.strategySet));		//名单对比
+				}else{
+					$('#mddbTable').html(fqzNull());		//名单对比
+				}
+				
+				if(Jsonlogin != null){
+					$('#LoginTable').html(strList(Jsonlogin.strategySet));			//登录
+				}else{
+					$('#LoginTable').html(fqzNull());			//登录
+				}
+			}
+		})
+	})
+	
+	function strList(Json){
+		var str = "";
+		for(var i = 0; i < Json.length; i++){
+
+			str += '<table cellspacing="0" cellpadding="0" class="tabcustomPeo yh-table-news sjthbgTable">'
+							+'<thead>'
+								+'<tr>'
+									+'<td>所属风险</td>'
+									+'<td style="background-color: #fff;">'+Json[i].riskType+'</td>'
+									+'<td>策略名称</td>'
+									+'<td style="background-color: #fff;">'+Json[i].strategyName+'</td>'
+								+'</tr>'
+							+'</thead>'
+							+'<thead>'
+								+'<tr>'
+									+'<td>结果</td>'
+									+'<td colspan="2">规则名称</td>'
+									+'<td>备注</td>'
+								+'</tr>'
+							+'</thead>'
+							+'<tbody>'
+								+strTd(Json[i].hitRules)
+							+'</tbody>'
+						+'</table>';
+		}
+		return str;
+	}
+	
+	
+	function strTd(Json){
+		var str = "";
+		for(var i = 0; i<Json.length; i++){
+			var memo = '&nbsp;&nbsp;';
+			if(typeof(Json[i].memo) != "undefined"){ 
+				memo = Json[i].memo;
+			}
+			var decision = '&nbsp;&nbsp;';
+			if(typeof(Json[i].decision) != "undefined"){ 
+				decision = Json[i].decision;
+			}
+			var  ruleName = '&nbsp;&nbsp;';
+			if(typeof(Json[i].ruleName) != "undefined"){ 
+				ruleName = Json[i].ruleName;
+			}
+			
+			str +=	'<tr>'
+					+'<td>'+ decision+'</td>'
+					+'<td colspan="2">'+ ruleName+'</td>'
+					+'<td>'+memo+'</td>'
+				+'</tr>'
+		}
+		return str;
+	}
+	
+	function fqzNull(json){
+		var str = '<table cellspacing="0" cellpadding="0" class="tabcustomPeo yh-table-news sjthbgTable">'
+					+'<thead>'
+					+'<tr>'
+						+'<td>所属风险</td>'
+						+'<td style="background-color: #fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>'
+						+'<td>策略名称</td>'
+						+'<td style="background-color: #fff;">&nbsp;</td>'
+					+'</tr>'
+				+'</thead>'
+				+'<thead>'
+					+'<tr>'
+						+'<td>结果</td>'
+						+'<td colspan="2">规则名称</td>'
+						+'<td>备注</td>'
+					+'</tr>'
+				+'</thead>'
+				+'<tbody>'
+					+ '<tr>'
+						+'<td>&nbsp;</td>'
+						+'<td colspan="2">&nbsp;</td>'
+						+'<td >&nbsp;</td>'
+					+'</tr>'
+				+'</tbody>'
+			+'</table>';
+		return str;
+	}
+</script>
